@@ -88,7 +88,7 @@
 .highlighted-image img {
     width: auto;
     height: auto;
-    max-height: 125px;  /* Giới hạn chiều cao */
+    max-height: 150px;  /* Giới hạn chiều cao */
     max-width: 300px;
     border-radius: 8px;
 }
@@ -147,7 +147,7 @@
 /* Phần nền dưới banner */
 .banner-background {
     width: 100%;
-    height: 125px; 
+    height: 150px; 
     background: linear-gradient(to right, black, #3b0000); /* Màu nền đậm */
     position: absolute;
     top: 100px; /* Điều chỉnh để nó dính sát phần navbar */
@@ -158,10 +158,10 @@
 /* Phần nền của background */
 .background {
     width: 100%;
-    height: 100%; 
-    background: #e2e0e0; /* Màu nền đậm */
-    position: absolute;
-    top: 100px; /* Điều chỉnh để nó dính sát phần navbar */
+    height: 100vh; /* Chiều cao của viewport */
+    background: #e2e0e0; /* Màu nền */
+    position: fixed;
+    top: 0;
     left: 0;
     z-index: -2; /* Đưa xuống dưới phần nội dung */
 }
@@ -174,7 +174,7 @@
 }
 
 .main-container {
-    max-width: 60%;
+    max-width: 70%;
     margin: auto;
 }
 
@@ -243,3 +243,92 @@
 .filter-btn:hover, .filter-control:hover {
     background: #e9ecef;
 }
+
+/* ===== Footer ===== */
+/* Footer */
+.footer {
+    background: linear-gradient(to right, black, #3b0000);
+    color: white;
+    padding: 40px 0;
+}
+
+/* Logo */
+.footer-logo img {
+    width: 120px;
+}
+.footer-slogan {
+    font-size: 14px;
+    color: #ccc;
+    margin-top: 5px;
+}
+
+/* Cột footer */
+.footer .col-md-2, .footer .col-md-3 {
+    min-width: 200px;
+    margin-bottom: 20px;
+}
+
+/* Social icons */
+.social-icons a {
+    display: inline-block;
+    color: white;
+    font-size: 18px;
+    margin-right: 10px;
+    transition: 0.3s;
+}
+.social-icons a:hover {
+    color: #ffcc00;
+}
+
+/* Links */
+.footer-links, .footer-contact {
+    list-style: none;
+    padding: 0;
+}
+.footer-links li, .footer-contact li {
+    margin-bottom: 4px;
+}
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.footer-links a:hover {
+    color: #ffcc00;
+}
+
+/* Dòng bản quyền */
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* ===== content ===== */
+.body-content {
+    background-color: #007bff;
+    width: auto;
+    height: auto;
+}
+
+.breadcrumb-container {
+    background: #f8f9fa;  /* Màu nền xám nhẹ */
+    padding: 10px 0;
+}
+
+.breadcrumb {
+    display: flex;
+    justify-content: left; /* Căn giữa ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+.breadcrumb-container {
+    background: #e2e0e0; /* Màu nền đậm */
+    border-top: 2px solid #ccc; /* Đường viền trên màu xám */
+    margin-top: 20px;
+    width: 100%;
+}
+
