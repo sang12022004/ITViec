@@ -27,7 +27,7 @@
 
 /* Định dạng vùng chứa thanh tìm kiếm */
 .search-container {
-    background: linear-gradient(to right, black, #3b0000); /* Màu nền đậm */
+    background: linear-gradient(to right, black, #3b0000);
     padding: 20px 0;
 }
 
@@ -88,7 +88,7 @@
 .highlighted-image img {
     width: auto;
     height: auto;
-    max-height: 150px;  /* Giới hạn chiều cao */
+    max-height: 150px;
     max-width: 300px;
     border-radius: 8px;
 }
@@ -148,22 +148,22 @@
 .banner-background {
     width: 100%;
     height: 150px; 
-    background: linear-gradient(to right, black, #3b0000); /* Màu nền đậm */
+    background: linear-gradient(to right, black, #3b0000);
     position: absolute;
-    top: 100px; /* Điều chỉnh để nó dính sát phần navbar */
+    top: 100px;
     left: 0;
-    z-index: -1; /* Đưa xuống dưới phần nội dung */
+    z-index: -1;
 }
 
 /* Phần nền của background */
 .background {
     width: 100%;
-    height: 100vh; /* Chiều cao của viewport */
-    background: #e2e0e0; /* Màu nền */
+    height: 100vh;
+    background: #e2e0e0;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: -2; /* Đưa xuống dưới phần nội dung */
+    z-index: -2;
 }
 
 
@@ -174,7 +174,7 @@
 }
 
 .main-container {
-    max-width: 70%;
+    max-width: 1100px;
     margin: auto;
 }
 
@@ -190,7 +190,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: white; /* Màu nền xám nhạt */
+    background: white;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
@@ -205,7 +205,7 @@
 .filter-btn {
     background: white;
     border: 1px solid #ddd;
-    border-radius: 20px; /* Bo góc giống trong ảnh */
+    border-radius: 20px;
     padding: 10px 15px;
     font-size: 14px;
     display: flex;
@@ -250,8 +250,8 @@
     background: linear-gradient(to right, black, #3b0000);
     color: white;
     padding: 40px 0;
-    justify-content: center; /* Căn giữa ngang */
-    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: center;
+    align-items: center;
 }
 
 /* Logo */
@@ -309,28 +309,161 @@
 
 /* ===== content ===== */
 .body-content {
+    margin-top: 20px;
     background-color: #007bff;
     width: auto;
     height: auto;
 }
 
 .breadcrumb-container {
-    background: #f8f9fa;  /* Màu nền xám nhẹ */
+    background: #f8f9fa;
     padding: 10px 0;
 }
 
 .breadcrumb {
     display: flex;
-    justify-content: left; /* Căn giữa ngang */
-    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: left;
+    align-items: center;
     margin-bottom: 0;
     font-size: 14px;
 }
 
 .breadcrumb-container {
-    background: #e2e0e0; /* Màu nền đậm */
-    border-top: 2px solid #ccc; /* Đường viền trên màu xám */
+    background: #e2e0e0;
+    border-top: 2px solid #ccc;
     margin-top: 20px;
     width: 100%;
 }
 
+.job-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Card Việc Làm ===== */
+.job-title {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+/* Huy hiệu HOT */
+.badge.bg-warning {
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.company-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 0px;
+    margin-right: 10px;
+}
+
+.company-name {
+    font-size: 9pt;
+}
+
+.salary {
+    margin-top: 10px;
+}
+
+.salary, .salary a, .salary i {
+
+    color: black;
+}
+
+.job-location {
+    font-size: 14px;
+    color: #666;
+}
+
+.job-tags .badge {
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin-right: 5px;
+}
+
+.badge-tag {
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin-right: 5px;
+    border: 1px solid rgb(204, 202, 202);
+}
+
+.time-and-badge {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Badge HOT */
+.hot-badge {
+    background: orange;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(5%, 30%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Mũi nhọn tam giác bên dưới HOT */
+.hot-badge::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    right: 8px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid orange;
+}
+
+.dot-hr {
+    border: none;
+    border-top: 1px dotted #000;
+    margin-top: 20px;
+}
+
+.custom-list {
+    list-style: none;
+    padding: 0;
+}
+
+.custom-list li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 15px; 
+    font-weight: bold;
+    color: black;
+    margin-bottom: 10px;
+}
+
+/* Tạo dấu chấm đỏ */
+.custom-list li::before {
+    content: "•";
+    color: red;
+    font-size: 15px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
