@@ -74,10 +74,8 @@
 
 /* ===== Banner Nhà Tuyển Dụng Nổi Bật ===== */
 .highlighted-employer {
-    max-width: 80%; /* Giới hạn chiều rộng */
-    margin: auto;
     background: #fff;
-    padding: auto;
+    padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -102,7 +100,6 @@
     left: 10px;
     background: orange;
     color: white;
-    font-size: 14px;
     padding: 5px 10px;
     border-radius: 5px;
     font-weight: bold;
@@ -158,9 +155,79 @@
     z-index: -1; /* Đưa xuống dưới phần nội dung */
 }
 
+/* Column */
+.column-background {
+    height: auto;
+    width: 90%;
+}
+
+.main-container {
+    max-width: 60%;
+    margin: auto;
+}
+
 /* ===== Tiêu đề danh sách việc làm ===== */
 .job-section-title {
     font-size: 24px;
     font-weight: bold;
     margin-top: 20px;
+}
+
+/* ===== Thanh Bộ Lọc ===== */
+.filter-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa; /* Màu nền xám nhạt */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Bộ lọc chính (Cấp bậc, Hình thức làm việc, Mức lương, Lĩnh vực) */
+.filters {
+    display: flex;
+    gap: 10px;
+}
+
+.filter-btn {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 20px; /* Bo góc giống trong ảnh */
+    padding: 10px 15px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 500;
+    color: black;
+}
+
+/* Nút bộ lọc */
+.filter-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: 500;
+    color: black;
+}
+
+.filter-btn, .filter-control {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: 500;
+    color: black;
+}
+
+/* Hiệu ứng hover */
+.filter-btn:hover, .filter-control:hover {
+    background: #e9ecef;
 }
