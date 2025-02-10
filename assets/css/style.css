@@ -1,0 +1,166 @@
+/* Navbar */
+.custom-navbar {
+    background: linear-gradient(to right, black, #3b0000); /* Chuyển màu từ đen sang đỏ đậm */
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    min-width: 200px;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Dropdown mở khi hover */
+.navbar .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Căn phải phần Nhà tuyển dụng, Đăng nhập, Ngôn ngữ */
+.navbar-nav:last-child {
+    margin-left: auto;
+}
+
+/* Tăng khoảng cách giữa các mục */
+.nav-link {
+    padding: 10px 15px;
+}
+
+/* Định dạng vùng chứa thanh tìm kiếm */
+.search-container {
+    background: linear-gradient(to right, black, #3b0000); /* Màu nền đậm */
+    padding: 20px 0;
+}
+
+/* Căn chỉnh thanh tìm kiếm */
+.search-bar {
+    display: flex;
+    gap: 10px;
+    max-width: 900px;
+    margin: auto;
+}
+
+/* Dropdown chọn thành phố */
+.search-dropdown {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Ô nhập từ khóa */
+.search-input {
+    flex: 1;
+    font-size: 16px;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Nút tìm kiếm */
+.search-btn {
+    background: red;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ===== Banner Nhà Tuyển Dụng Nổi Bật ===== */
+.highlighted-employer {
+    max-width: 80%; /* Giới hạn chiều rộng */
+    margin: auto;
+    background: #fff;
+    padding: auto;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Hình ảnh tuyển dụng */
+.highlighted-image {
+    position: relative;
+}
+
+.highlighted-image img {
+    width: auto;
+    height: auto;
+    max-height: 125px;  /* Giới hạn chiều cao */
+    max-width: 300px;
+    border-radius: 8px;
+}
+
+/* Nhãn "Nhà Tuyển Dụng Nổi Bật" */
+.highlighted-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: orange;
+    color: white;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Thông tin tuyển dụng */
+.highlighted-info h4 {
+    font-weight: bold;
+}
+
+.highlighted-info p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.highlighted-description {
+    font-size: 14px;
+    color: #333;
+}
+
+.highlighted-link {
+    color: #007bff;
+    font-weight: bold;
+}
+
+/* Danh sách công việc nổi bật */
+.job-list {
+    list-style: none;
+    padding: 0;
+}
+
+.job-list li {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.job-list i {
+    color: red;
+    margin-right: 8px;
+}
+
+/* Phần nền dưới banner */
+.banner-background {
+    width: 100%;
+    height: 125px; 
+    background: linear-gradient(to right, black, #3b0000); /* Màu nền đậm */
+    position: absolute;
+    top: 100px; /* Điều chỉnh để nó dính sát phần navbar */
+    left: 0;
+    z-index: -1; /* Đưa xuống dưới phần nội dung */
+}
+
+/* ===== Tiêu đề danh sách việc làm ===== */
+.job-section-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+}
