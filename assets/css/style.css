@@ -250,6 +250,8 @@
     background: linear-gradient(to right, black, #3b0000);
     color: white;
     padding: 40px 0;
+    justify-content: center; /* Căn giữa ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
 }
 
 /* Logo */
@@ -301,7 +303,7 @@
 .footer-bottom {
     text-align: center;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 14px;
+    font-size: 20px;
     color: #ccc;
 }
 
