@@ -155,6 +155,18 @@
     z-index: -1; /* Đưa xuống dưới phần nội dung */
 }
 
+/* Phần nền của background */
+.background {
+    width: 100%;
+    height: 100%; 
+    background: #e2e0e0; /* Màu nền đậm */
+    position: absolute;
+    top: 100px; /* Điều chỉnh để nó dính sát phần navbar */
+    left: 0;
+    z-index: -2; /* Đưa xuống dưới phần nội dung */
+}
+
+
 /* Column */
 .column-background {
     height: auto;
@@ -178,7 +190,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #f8f9fa; /* Màu nền xám nhạt */
+    background: white; /* Màu nền xám nhạt */
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
