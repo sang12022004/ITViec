@@ -339,17 +339,21 @@
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 10px;
-    padding: px;
     margin-bottom: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
+    position: relative;
 }
 
 /* ===== Card Việc Làm ===== */
 .job-title {
     font-size: 18px;
+    font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: left;
+    gap: 5px;
 }
 
 /* Huy hiệu HOT */
@@ -367,7 +371,8 @@
 }
 
 .company-name {
-    font-size: 9pt;
+    font-size: 10pt;
+    margin-top: 20px;
 }
 
 .salary {
@@ -466,4 +471,87 @@
     position: absolute;
     left: 0;
     top: 0;
+}
+
+/* ======= Header: Logo + Tiêu đề ======= */
+.job-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.company-logo-in-content {
+    width: 90px;
+    height: 90px;
+    border-radius: 5px;
+}
+
+.job-title h4 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.job-title h4 a {
+    color: blue;
+    font-size: 14px;
+}
+
+/* ======= Nút Apply ======= */
+.apply-btn {
+    background: #e60012; /* Màu đỏ */
+    color: white;
+    border: none;
+    font-size: 12px; /* Cỡ chữ lớn hơn */
+    font-weight: bold;
+    border-radius: 5px;
+    height: 36px;
+    width: 90%;
+    max-width: 600px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.apply-btn:hover {
+    background: #cc000f;
+}
+
+/* ======= Nút Yêu Thích (Trái Tim) ======= */
+.favorite-icon {
+    font-size: 36px;
+    color: #e60012;
+    cursor: pointer;
+    position: absolute;
+    right: 0px; /* Đưa icon ra ngoài sát viền phải */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* ======= Nút mở ngoài ======= */
+.external-link {
+    font-size: 14x;
+    color: blue;
+}
+
+/* 📌 Nút Apply */
+.job-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+    position: relative; /* Để icon trái tim có thể căn ra ngoài */
+}
+
+.external-link {
+    font-size: 12px; /* Thu nhỏ icon */
+    color: rgb(46, 46, 253);
+    text-decoration: none;
+}
+
+.external-link i {
+    transition: transform 0.2s ease-in-out;
+}
+
+.external-link:hover i {
+    transform: scale(1.1); /* Hiệu ứng khi hover */
 }
