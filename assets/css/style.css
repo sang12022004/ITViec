@@ -457,20 +457,22 @@
 .custom-list li {
     position: relative;
     padding-left: 20px;
-    font-size: 15px; 
+    font-size: 10px; 
     font-weight: bold;
     color: black;
     margin-bottom: 10px;
+    align-items: center;
 }
 
 /* Tạo dấu chấm đỏ */
 .custom-list li::before {
     content: "•";
     color: red;
-    font-size: 15px;
+    font-size: 14px;
     position: absolute;
     left: 0;
     top: 0;
+    transform: translateY(-15%); /* Căn giữa theo chiều dọc */
 }
 
 /* ======= Header: Logo + Tiêu đề ======= */
@@ -506,7 +508,7 @@
     font-weight: bold;
     border-radius: 5px;
     height: 36px;
-    width: 90%;
+    width: 93%;
     max-width: 600px;
     cursor: pointer;
     text-align: center;
@@ -590,4 +592,115 @@
     flex-direction: column;
     flex-grow: 1;
     overflow: hidden; /* Ngăn nội dung tràn ra */
+}
+
+.skills-job {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    position: relative;
+    gap: 10px;
+}
+
+.title-top-in-content {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.custom-list-in-content {
+    list-style: none;
+    padding: 0;
+}
+
+.custom-list-in-content li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 15px; 
+    color: black;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+/* Tạo dấu chấm đỏ */
+.custom-list-in-content li::before {
+    content: "•";
+    color: red;
+    font-size: 18px;
+    position: absolute;
+    font-weight: bold;
+    left: 0;
+    top: 0;
+}
+
+/* Định dạng danh sách con */
+.sub-list {
+    list-style: none; /* Bỏ dấu mặc định */
+    padding-left: 20px; /* Thụt vào so với danh sách cha */
+    font-weight: normal;
+    font-size: 13px;
+    color: #333;
+}
+
+/* Dấu đầu dòng danh sách con (nhỏ hơn và màu xám) */
+.sub-list-in-content li::before {
+    content: "◦"; /* Dấu tròn nhỏ */
+    color: #d9534f; /* Màu đỏ nhạt */
+    font-size: 18px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.company-name {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.company-description {
+    font-size: 9px;
+    color: #666;
+}
+
+.view-company-link {
+    font-size: 12px;
+    color: blue;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.view-company-link i {
+    margin-right: 5px;
+}
+
+.company-label {
+    font-size: 12px;
+    color: rgb(197, 196, 196);
+    margin-bottom: 0;
+}
+
+.company-value {
+    color: #000;
+    font-size: 14px;
+    margin-top: 2px;
+}
+
+.country-flag {
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.favorite-icon {
+    font-size: 27px;
+}
+
+.favorite-icon:hover {
+    font-size: 28px;
+    transition: 0.3s ease;
 }
