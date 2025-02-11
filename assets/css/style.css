@@ -608,7 +608,6 @@
     top: 20px;
     right: 13.7%;
     overflow-y: auto;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .card-content.bottom {
@@ -736,4 +735,55 @@
 .favorite-icon:hover {
     font-size: 28px;
     transition: 0.3s ease;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 60px;
+    font-size: 16px;
+}
+
+.pagination button {
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    width: 30px; 
+    height: 30px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.pagination button.active {
+    background-color: #fc0000d0;
+    color: white;
+    font-weight: bold;
+}
+
+.pagination button:hover {
+    background-color: lightgray;
+}
+
+.pagination button:disabled {
+    color: gray;
+    cursor: not-allowed;
+}
+
+.navbar-container {
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.logo-navbar {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+    padding: 10px 0px;
+}
+
+.logo-navbar .navbar-brand {
+    margin-right: 20px; /* Tạo khoảng cách giữa logo và menu */
 }

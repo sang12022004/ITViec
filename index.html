@@ -18,51 +18,47 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
         <div class="container">
-            <!-- Logo -->
-            <a class="navbar-brand" href="#">
-                <img src="assets/images/logo.png" alt="Logo ITviec" height="40">
-            </a>
-
-            <!-- Nút mở menu trên mobile -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
             <!-- Menu chính -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="jobsDropdown" role="button" data-bs-toggle="dropdown">
-                            Việc Làm IT
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Việc làm theo kỹ năng</a></li>
-                            <li><a class="dropdown-item" href="#">Việc làm theo cấp bậc</a></li>
-                            <li><a class="dropdown-item" href="#">Việc làm theo công ty</a></li>
-                            <li><a class="dropdown-item" href="#">Việc làm theo thành phố</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="jobsDropdown" role="button" data-bs-toggle="dropdown">
-                            Top Công Ty IT
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Việc làm theo kỹ năng</a></li>
-                            <li><a class="dropdown-item" href="#">Việc làm theo cấp bậc</a></li>
-                            <li><a class="dropdown-item" href="#">Việc làm theo công ty</a></li>
-                            <li><a class="dropdown-item" href="#">Việc làm theo thành phố</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="blogDropdown" role="button" data-bs-toggle="dropdown">
-                            Blog
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Tin tức IT</a></li>
-                            <li><a class="dropdown-item" href="#">Chia sẻ kinh nghiệm</a></li>
-                        </ul>
-                    </li>
-                </ul>
+            <div class="navbar-container collapse navbar-collapse" id="navbarNav">
+                <div class="logo-navbar">
+                    <!-- Logo -->
+                    <a class="navbar-brand" href="#">
+                        <img src="assets/images/logo.png" alt="Logo ITviec" height="40">
+                    </a>
+                
+                    <!-- Thanh menu -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button">
+                                Việc Làm IT
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Việc làm theo kỹ năng</a></li>
+                                <li><a class="dropdown-item" href="#">Việc làm theo cấp bậc</a></li>
+                                <li><a class="dropdown-item" href="#">Việc làm theo công ty</a></li>
+                                <li><a class="dropdown-item" href="#">Việc làm theo thành phố</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button">
+                                Top Công Ty IT
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Danh sách công ty</a></li>
+                                <li><a class="dropdown-item" href="#">Đánh giá công ty</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button">
+                                Blog
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Tin tức IT</a></li>
+                                <li><a class="dropdown-item" href="#">Chia sẻ kinh nghiệm</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
 
                 <!-- Phần bên phải -->
                 <ul class="navbar-nav">
@@ -536,6 +532,8 @@
         </div>
     </div>
 
+    <div class="pagination" id="pagination"></div>
+
     <div class="footer-background">
         <nav aria-label="breadcrumb" class="breadcrumb-container">
             <div class="container main-container">
@@ -616,6 +614,7 @@
             </div>
         </footer>
     </div>
+
     <script src="assets/js/script.js"></script>
 </body>
 <!-- Bootstrap JS (bắt buộc để dropdown hoạt động) -->
