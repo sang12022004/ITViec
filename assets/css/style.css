@@ -174,7 +174,7 @@
 }
 
 .main-container {
-    max-width: 1100px;
+    width: 74%;
     margin: auto;
 }
 
@@ -309,10 +309,10 @@
 
 /* ===== content ===== */
 .body-content {
+    position: relative;
     margin-top: 20px;
-    background-color: #007bff;
     width: auto;
-    height: 100vh;
+    height: auto;
 }
 
 .breadcrumb-container {
@@ -342,8 +342,12 @@
     margin-bottom: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     max-width: 600px;
-    margin: auto;
+    margin-bottom: 8px;
     position: relative;
+}
+
+.job-card:last-of-type {
+    margin-bottom: 0;
 }
 
 /* ===== Card Việc Làm ===== */
@@ -578,14 +582,43 @@
     color: #333;
 }
 
-.card-content {
+/* .card-content {
     display: flex;
     flex-direction: column;
     height: 95vh;
-    margin: 2.5vh 0;
-    max-height: 900px; /* Đảm bảo không bị quá dài */
-    overflow: hidden; /* Giữ nội dung bên trong */
+    max-height: 900px;
+    overflow: hidden;
+} */
+
+.card-content {
+    height: 95vh;
+    max-height: 900px;
+    width: 100%;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    position: relative;
 }
+
+.card-content.fixed {
+    height: 95vh;
+    max-height: 900px;
+    position: fixed;
+    top: 20px;
+    right: 13.7%;
+    overflow-y: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-content.bottom {
+    height: 95vh;
+    max-height: 900px;
+    position: absolute;
+    bottom: 0px;
+}
+
+
 
 .card-body {
     display: flex;
