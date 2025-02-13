@@ -15,127 +15,137 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
-        <div class="container">
-            <!-- Menu chính -->
-            <div class="navbar-container collapse navbar-collapse" id="navbarNav">
-                <div class="logo-navbar">
-                    <!-- Logo -->
-                    <a class="navbar-brand" href="#">
-                        <img src="assets/images/logo.png" alt="Logo ITviec" height="40">
-                    </a>
-                
-                    <!-- Thanh menu -->
+    <div class="main">
+        <div class="background"></div>
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+            <div class="container">
+                <!-- Menu chính -->
+                <div class="navbar-container collapse navbar-collapse" id="navbarNav">
+                    <div class="logo-navbar">
+                        <!-- Logo -->
+                        <a class="navbar-brand" href="#">
+                            <img src="assets/images/logo.png" alt="Logo ITviec" height="40">
+                        </a>
+                    
+                        <!-- Thanh menu -->
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button">
+                                    Việc Làm IT
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Việc làm theo kỹ năng</a></li>
+                                    <li><a class="dropdown-item" href="#">Việc làm theo cấp bậc</a></li>
+                                    <li><a class="dropdown-item" href="#">Việc làm theo công ty</a></li>
+                                    <li><a class="dropdown-item" href="#">Việc làm theo thành phố</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button">
+                                    Top Công Ty IT
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Danh sách công ty</a></li>
+                                    <li><a class="dropdown-item" href="#">Đánh giá công ty</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button">
+                                    Blog
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Tin tức IT</a></li>
+                                    <li><a class="dropdown-item" href="#">Chia sẻ kinh nghiệm</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Phần bên phải -->
                     <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button">
-                                Việc Làm IT
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Việc làm theo kỹ năng</a></li>
-                                <li><a class="dropdown-item" href="#">Việc làm theo cấp bậc</a></li>
-                                <li><a class="dropdown-item" href="#">Việc làm theo công ty</a></li>
-                                <li><a class="dropdown-item" href="#">Việc làm theo thành phố</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button">
-                                Top Công Ty IT
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Danh sách công ty</a></li>
-                                <li><a class="dropdown-item" href="#">Đánh giá công ty</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button">
-                                Blog
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Tin tức IT</a></li>
-                                <li><a class="dropdown-item" href="#">Chia sẻ kinh nghiệm</a></li>
-                            </ul>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="#">Nhà Tuyển Dụng</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Đăng Nhập/Đăng Ký</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">EN | VI</a></li>
                     </ul>
                 </div>
-
-                <!-- Phần bên phải -->
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="#">Nhà Tuyển Dụng</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Đăng Nhập/Đăng Ký</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">EN | VI</a></li>
-                </ul>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-    <div class="banner-background"></div>
+        <div class="search-container">
+            <!-- Thanh tìm kiếm -->
+            <div class="container">
+                <div class="search-bar">
+                    <!-- Dropdown Thành Phố -->
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle search-dropdown" type="button" data-bs-toggle="dropdown">
+                            <i class="fa-solid fa-location-dot"></i> Tất cả thành phố
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Hà Nội</a></li>
+                            <li><a class="dropdown-item" href="#">Hồ Chí Minh</a></li>
+                            <li><a class="dropdown-item" href="#">Đà Nẵng</a></li>
+                        </ul>
+                    </div>
 
-    <div class="background"></div>
+                    <!-- Ô nhập từ khóa -->
+                    <input type="text" class="form-control search-input" placeholder="Nhập từ khóa theo kỹ năng, chức vụ, công ty...">
 
-    <!-- Thanh tìm kiếm -->
-    <div class="search-container">
-        <div class="container">
-            <div class="search-bar">
-                <!-- Dropdown Thành Phố -->
-                <div class="dropdown">
-                    <button class="btn btn-light dropdown-toggle search-dropdown" type="button" data-bs-toggle="dropdown">
-                        <i class="fa-solid fa-location-dot"></i> Tất cả thành phố
+                    <!-- Nút tìm kiếm -->
+                    <button class="btn btn-danger search-btn">
+                        <i class="fa-solid fa-search"></i> Tìm Kiếm
                     </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Hà Nội</a></li>
-                        <li><a class="dropdown-item" href="#">Hồ Chí Minh</a></li>
-                        <li><a class="dropdown-item" href="#">Đà Nẵng</a></li>
-                    </ul>
-                </div>
-
-                <!-- Ô nhập từ khóa -->
-                <input type="text" class="form-control search-input" placeholder="Nhập từ khóa theo kỹ năng, chức vụ, công ty...">
-
-                <!-- Nút tìm kiếm -->
-                <button class="btn btn-danger search-btn">
-                    <i class="fa-solid fa-search"></i> Tìm Kiếm
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <div class="container main-container">
-        <div class="highlighted-employer">
-            <div class="row">
-                <!-- Hình ảnh nhà tuyển dụng -->
-                <div class="col-md-4">
-                    <div class="highlighted-image">
-                        <img src="assets/images/banner.png" alt="Nhà Tuyển Dụng Nổi Bật" class="img-fluid">
-                        <span class="highlighted-label">Nhà Tuyển Dụng Nổi Bật</span>
-                    </div>
-                </div>
-
-                <!-- Thông tin nhà tuyển dụng -->
-                <div class="col-md-5">
-                    <div class="highlighted-info">
-                        <h4>Thoughtworks Vietnam</h4>
-                        <p><i class="fa-solid fa-location-dot"></i> Hồ Chí Minh</p>
-                        <p class="highlighted-description">
-                            A global tech consultancy that integrates strategy, design & engineering to drive digital innovation.
-                        </p>
-                        <a href="#" class="highlighted-link">Xem 4 việc làm ></a>
-                    </div>
-                </div>
-
-                <!-- Danh sách công việc -->
-                <div class="col-md-3">
-                    <ul class="job-list">
-                        <li><i class="fa-solid fa-circle-exclamation"></i> System Support Engineer (C#/Java/Ruby, DevOps)</li>
-                        <li><i class="fa-solid fa-circle-exclamation"></i> Lead Systems Support Engineer (Java, C#, DevOps)</li>
-                        <li><i class="fa-solid fa-circle-exclamation"></i> Lead Software Engineer (C#, .NET)</li>
-                    </ul>
                 </div>
             </div>
         </div>
 
-        <h2 class="job-section-title">949 việc làm IT tại Việt Nam</h2>
+        <div class="wrapper">
+            <!-- Nửa trên: Banner -->
+            <div class="banner-background">
+                <div class="container main-container">
+                    <div class="highlighted-employer">
+                        <div class="row">
+                            <!-- Hình ảnh nhà tuyển dụng -->
+                            <div class="col-md-4">
+                                <div class="highlighted-image">
+                                    <img src="assets/images/banner.png" alt="Nhà Tuyển Dụng Nổi Bật" class="img-fluid">
+                                    <span class="highlighted-label">Nhà Tuyển Dụng Nổi Bật</span>
+                                </div>
+                            </div>
+        
+                            <!-- Thông tin nhà tuyển dụng -->
+                            <div class="col-md-5">
+                                <div class="highlighted-info">
+                                    <h4>Thoughtworks Vietnam</h4>
+                                    <p><i class="fa-solid fa-location-dot"></i> Hồ Chí Minh</p>
+                                    <p class="highlighted-description">
+                                        A global tech consultancy that integrates strategy, design & engineering to drive digital innovation.
+                                    </p>
+                                    <a href="#" class="highlighted-link">Xem 4 việc làm ></a>
+                                </div>
+                            </div>
+        
+                            <!-- Danh sách công việc -->
+                            <div class="col-md-3">
+                                <ul class="job-list">
+                                    <li><i class="fa-solid fa-circle-exclamation"></i> System Support Engineer (C#/Java/Ruby, DevOps)</li>
+                                    <li><i class="fa-solid fa-circle-exclamation"></i> Lead Systems Support Engineer (Java, C#, DevOps)</li>
+                                    <li><i class="fa-solid fa-circle-exclamation"></i> Lead Software Engineer (C#, .NET)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Nửa dưới: Màu xám -->
+            <div class="gray-background"></div>
+        </div>
+        
+        <div class="main-container-body">
+            <h2 class="job-section-title">949 việc làm IT tại Việt Nam</h2>
+        </div>
 
         <!-- Phần bộ lọc -->
         <div class="filter-bar">
@@ -191,9 +201,9 @@
                                     <span class="badge-tag text-dark">Tester</span>
                                     <span class="badge-tag text-dark">Project Manager</span>
                                 </div>
-
+    
                                 <hr class="dot-hr">
-
+    
                                 <ul class="custom-list">
                                     <li>Attractive remuneration package with 18 days off</li>
                                     <li>Smart people, interesting project & swiss quality</li>
@@ -238,9 +248,9 @@
                                     <span class="badge-tag text-dark">Tester</span>
                                     <span class="badge-tag text-dark">Project Manager</span>
                                 </div>
-
+    
                                 <hr class="dot-hr">
-
+    
                                 <ul class="custom-list">
                                     <li>Attractive remuneration package with 18 days off</li>
                                     <li>Smart people, interesting project & swiss quality</li>
@@ -285,9 +295,9 @@
                                     <span class="badge-tag text-dark">Tester</span>
                                     <span class="badge-tag text-dark">Project Manager</span>
                                 </div>
-
+    
                                 <hr class="dot-hr">
-
+    
                                 <ul class="custom-list">
                                     <li>Attractive remuneration package with 18 days off</li>
                                     <li>Smart people, interesting project & swiss quality</li>
@@ -332,9 +342,9 @@
                                     <span class="badge-tag text-dark">Tester</span>
                                     <span class="badge-tag text-dark">Project Manager</span>
                                 </div>
-
+    
                                 <hr class="dot-hr">
-
+    
                                 <ul class="custom-list">
                                     <li>Attractive remuneration package with 18 days off</li>
                                     <li>Smart people, interesting project & swiss quality</li>
@@ -379,9 +389,9 @@
                                     <span class="badge-tag text-dark">Tester</span>
                                     <span class="badge-tag text-dark">Project Manager</span>
                                 </div>
-
+    
                                 <hr class="dot-hr">
-
+    
                                 <ul class="custom-list">
                                     <li>Attractive remuneration package with 18 days off</li>
                                     <li>Smart people, interesting project & swiss quality</li>
@@ -412,7 +422,7 @@
                                 <button class="apply-btn">Apply now</button>
                                 <i class="fa-regular fa-heart favorite-icon"></i>
                             </div>
-
+    
                             <!-- Phần có thể kéo -->
                             <div class="scrollable-section">
                                 <!-- Địa điểm & hình thức làm việc -->
@@ -433,13 +443,13 @@
                                         <span class="badge-tag text-dark">Project Manager</span>
                                     </div>
                                 </div>
-
+    
                                 <hr class="dot-hr">
-
+    
                                 <h3 class="title-top-in-content">
                                     Top 3 reasons to join us
                                 </h3>
-
+    
                                 <ul class="custom-list-in-content">
                                     <li>Attractive remuneration package with 18 days off</li>
                                     <li>Smart people, interesting project & swiss quality</li>
@@ -447,7 +457,7 @@
                                 </ul>  
                                 
                                 <hr class="dot-hr">
-
+    
                                 <h3 class="title-top-in-content">
                                     Job description
                                 </h3>
@@ -462,9 +472,9 @@
                                     <li>Provide training and support to end-users to enhance their proficiency with Oracle applications.</li>
                                     <li>Participate in cross-functional projects involving Oracle applications, ensuring HR and Finance module alignment with business goals.</li>
                                 </ul>  
-
+    
                                 <hr class="dot-hr">
-
+    
                                 <h3 class="title-top-in-content">Your skills and experience</h3>
                                 <ul class="custom-list-in-content">
                                     <li>Bachelor’s degree in Information Technology, Computer Science, Finance, Human Resources, or a related field.</li>
@@ -481,9 +491,9 @@
                                     <li>Excellent problem-solving skills and attention to detail.</li>
                                     <li>Strong English communication and interpersonal skills to effectively interact with end-users and team members.</li>
                                 </ul>
-
+    
                                 <hr>
-
+    
                                 <!-- Footer trong content -->
                                 <div class="company-card">
                                     <div class="d-flex justify-content-between align-items-center">
@@ -530,90 +540,91 @@
                 </div>
             </div>
         </div>
-    </div>
+    
+        <div class="pagination" id="pagination"></div>
 
-    <div class="pagination" id="pagination"></div>
-
-    <div class="footer-background">
-        <nav aria-label="breadcrumb" class="breadcrumb-container">
-            <div class="container main-container">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">Trang chủ</li>
-                    <li class="breadcrumb-item active" aria-current="page">Tất cả việc làm IT</li>
-                </ol>
-            </div>
-        </nav>
-        <!-- Footer -->
-        <footer class="footer mt-auto py-4 bg-dark text-white">
-            <div class="container main-container">
-                <div class="row d-flex flex-wrap justify-content-between">
-                    <!-- Cột 1: Logo & Social Media -->
-                    <div class="col-md-2 col-sm-6">
-                        <div class="footer-logo">
-                            <img src="assets/images/logo.png" alt="ITViec" class="img-fluid">
-                            <p class="footer-slogan">Ít nhưng mà chất</p>
+        <div class="footer-background">
+            <nav aria-label="breadcrumb" class="breadcrumb-container">
+                <div class="container main-container">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">Trang chủ</li>
+                        <li class="breadcrumb-item active" aria-current="page">Tất cả việc làm IT</li>
+                    </ol>
+                </div>
+            </nav>
+            <!-- Footer -->
+            <footer class="footer mt-auto py-4 bg-dark text-white">
+                <div class="container main-container">
+                    <div class="row d-flex flex-wrap justify-content-between">
+                        <!-- Cột 1: Logo & Social Media -->
+                        <div class="col-md-2 col-sm-6">
+                            <div class="footer-logo">
+                                <img src="assets/images/logo.png" alt="ITViec" class="img-fluid">
+                                <p class="footer-slogan">Ít nhưng mà chất</p>
+                            </div>
+                            <div class="social-icons">
+                                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                            </div>
                         </div>
-                        <div class="social-icons">
-                            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            
+                        <!-- Cột 2: Về ITviec -->
+                        <div class="col-md-2 col-sm-6">
+                            <h5>Về ITviec</h5>
+                            <ul class="footer-links">
+                                <li><a href="#">Trang Chủ</a></li>
+                                <li><a href="#">Về ITviec.com</a></li>
+                                <li><a href="#">Dịch vụ gợi ý ứng viên</a></li>
+                                <li><a href="#">Liên Hệ</a></li>
+                                <li><a href="#">Việc Làm IT</a></li>
+                                <li><a href="#">Câu hỏi thường gặp</a></li>
+                            </ul>
                         </div>
-                    </div>
-        
-                    <!-- Cột 2: Về ITviec -->
-                    <div class="col-md-2 col-sm-6">
-                        <h5>Về ITviec</h5>
-                        <ul class="footer-links">
-                            <li><a href="#">Trang Chủ</a></li>
-                            <li><a href="#">Về ITviec.com</a></li>
-                            <li><a href="#">Dịch vụ gợi ý ứng viên</a></li>
-                            <li><a href="#">Liên Hệ</a></li>
-                            <li><a href="#">Việc Làm IT</a></li>
-                            <li><a href="#">Câu hỏi thường gặp</a></li>
-                        </ul>
-                    </div>
-        
-                    <!-- Cột 3: Chương trình -->
-                    <div class="col-md-2 col-sm-6">
-                        <h5>Chương trình</h5>
-                        <ul class="footer-links">
-                            <li><a href="#">Chuyện IT</a></li>
-                            <li><a href="#">Cuộc thi viết</a></li>
-                            <li><a href="#">Việc làm IT nổi bật</a></li>
-                            <li><a href="#">Khảo sát thường niên</a></li>
-                        </ul>
-                    </div>
-        
-                    <!-- Cột 4: Điều khoản -->
-                    <div class="col-md-2 col-sm-6">
-                        <h5>Điều khoản chung</h5>
-                        <ul class="footer-links">
-                            <li><a href="#">Quy định bảo mật</a></li>
-                            <li><a href="#">Quy chế hoạt động</a></li>
-                            <li><a href="#">Giải quyết khiếu nại</a></li>
-                            <li><a href="#">Thỏa thuận sử dụng</a></li>
-                            <li><a href="#">Thông cáo báo chí</a></li>
-                        </ul>
-                    </div>
-        
-                    <!-- Cột 5: Liên hệ -->
-                    <div class="col-md-3 col-sm-6">
-                        <h5>Liên hệ</h5>
-                        <ul class="footer-contact">
-                            <li><i class="fa-solid fa-phone"></i> Hồ Chí Minh: (+84) 977 460 519</li>
-                            <li><i class="fa-solid fa-phone"></i> Hà Nội: (+84) 983 131 351</li>
-                            <li><i class="fa-solid fa-envelope"></i> Email: love@itviec.com</li>
-                            <li><i class="fa-solid fa-paper-plane"></i> Gửi thông tin liên hệ</li>
-                        </ul>
+            
+                        <!-- Cột 3: Chương trình -->
+                        <div class="col-md-2 col-sm-6">
+                            <h5>Chương trình</h5>
+                            <ul class="footer-links">
+                                <li><a href="#">Chuyện IT</a></li>
+                                <li><a href="#">Cuộc thi viết</a></li>
+                                <li><a href="#">Việc làm IT nổi bật</a></li>
+                                <li><a href="#">Khảo sát thường niên</a></li>
+                            </ul>
+                        </div>
+            
+                        <!-- Cột 4: Điều khoản -->
+                        <div class="col-md-2 col-sm-6">
+                            <h5>Điều khoản chung</h5>
+                            <ul class="footer-links">
+                                <li><a href="#">Quy định bảo mật</a></li>
+                                <li><a href="#">Quy chế hoạt động</a></li>
+                                <li><a href="#">Giải quyết khiếu nại</a></li>
+                                <li><a href="#">Thỏa thuận sử dụng</a></li>
+                                <li><a href="#">Thông cáo báo chí</a></li>
+                            </ul>
+                        </div>
+            
+                        <!-- Cột 5: Liên hệ -->
+                        <div class="col-md-3 col-sm-6">
+                            <h5>Liên hệ</h5>
+                            <ul class="footer-contact">
+                                <li><i class="fa-solid fa-phone"></i> Hồ Chí Minh: (+84) 977 460 519</li>
+                                <li><i class="fa-solid fa-phone"></i> Hà Nội: (+84) 983 131 351</li>
+                                <li><i class="fa-solid fa-envelope"></i> Email: love@itviec.com</li>
+                                <li><i class="fa-solid fa-paper-plane"></i> Gửi thông tin liên hệ</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- Dòng bản quyền -->
-            <div class="footer-bottom text-center pt-3">
-                <p>Copyright © IT VIEC JSC | MST: 0312192258</p>
-            </div>
-        </footer>
+                <!-- Dòng bản quyền -->
+                <div class="footer-bottom text-center pt-3">
+                    <p>Copyright © IT VIEC JSC | MST: 0312192258</p>
+                </div>
+            </footer>
+        </div>
     </div>
+   
 
     <script src="assets/js/script.js"></script>
 </body>
