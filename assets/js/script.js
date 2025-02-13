@@ -15,19 +15,19 @@ document.addEventListener("DOMContentLoaded", function () {
         if (rect.top > 20) {
             jobDetail.classList.remove("fixed", "bottom");
             //jobDetail.style.width = originalWidth;
-            jobDetail.style.height = "96vh";
+            jobDetail.style.height = "94vh";
         } 
         else if (rect.top <= 20 && rect.bottom >= windowHeight - 25) {
             jobDetail.classList.add("fixed");
             jobDetail.classList.remove("bottom");
             jobDetail.style.width = originalWidth;
-            jobDetail.style.height = "96vh"; // Định nghĩa chiều cao hợp lý
+            jobDetail.style.height = "94vh"; // Định nghĩa chiều cao hợp lý
         } 
         else {
             jobDetail.classList.remove("fixed");
             jobDetail.classList.add("bottom");
             //jobDetail.style.width = originalWidth;
-            jobDetail.style.height = "96vh";
+            jobDetail.style.height = "94vh";
         }
     });
 });
