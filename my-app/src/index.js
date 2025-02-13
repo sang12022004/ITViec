@@ -7,6 +7,9 @@ import App from './App';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
+// Import Font Awesome
+import "@fortawesome/fontawesome-free/css/all.min.css"
+
 // Import CSS riêng của bạn
 import "./assets/css/style.css";
 
