@@ -68,6 +68,7 @@ body {
 
 .main-container {
     width: 200%;
+    height: auto;
     margin-top: auto;
     align-items: center; 
     justify-content: center;
