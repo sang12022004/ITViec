@@ -29,8 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
-
 function updateCardPosition() {
     const bodyContent = document.querySelector('.body-content');
     const cardContent = document.querySelector('.card-content.fixed');
