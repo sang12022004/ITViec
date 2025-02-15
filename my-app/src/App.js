@@ -20,15 +20,7 @@ function App() {
       </div>
       <Title/>
       <FilterBar/>
-      <div class="body-content">
-        <div class="row">
-          <div class="col-md-5 job-list-container">
-            <JobListBar />
-          </div>
-          <div class="col-md-7">
-          </div>
-        </div>
-      </div>
+      <JobListBar/>
       <Pagination />
       <Footer/>
     </div>
