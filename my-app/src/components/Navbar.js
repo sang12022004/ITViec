@@ -1,16 +1,11 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef} from "react";
 import logo from "../assets/images/logo.png";
 import "../assets/css/navbar.css"; // Import file CSS
 
 function Navbar() {
     const [activeMenu, setActiveMenu] = useState(null);
     const [activeSubmenu, setActiveSubmenu] = useState(null);
-    const [submenuHeight, setSubmenuHeight] = useState("auto");
-    const [activeItem, setActiveItem] = useState(null);
 
-    const handleSelect = (index) => {
-        setActiveItem(index);
-    };
     const menuRef = useRef(null);
 
     const getColumnCount = (submenu) => {
@@ -110,12 +105,6 @@ function Navbar() {
             ]
         }
     ];
-
-    useEffect(() => {
-        if (menuRef.current) {
-            setSubmenuHeight(menuRef.current.clientHeight);
-        }
-    }, [activeMenu]);
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark custom-navbar">
