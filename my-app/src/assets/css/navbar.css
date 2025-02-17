@@ -61,11 +61,11 @@
 
 /* Dropdown menu */
 .dropdown-menu {
+    background: black !important;
     display: flex; /* Chia menu thành 2 phần: trái và phải */
     width: auto; /* Độ rộng của toàn bộ submenu */
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 0px;
+    box-shadow: none;
     position: absolute;
     top: 100%;
     left: 0;
@@ -83,21 +83,21 @@
 /* === Cột bên trái (dọc) === */
 .dropdown-left {
     flex: 1; /* Chiếm 25% */
+    min-width: 300px;
     display: flex;
     flex-direction: column;
     border-right: 1px solid #ddd;
-    padding-right: 10px;
 }
 
 .dropdown-left .dropdown-item {
-    font-weight: bold;
-    padding: 10px;
+    padding: 12px 15px;
     cursor: pointer;
-    border-bottom: 1px solid #ddd;
+    gap: 10px;
+    border-bottom: 1px solid #333;
 }
 
 .dropdown-left .dropdown-item:hover {
-    background: #f5f5f5;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 /* === Cột bên phải (grid) === */
@@ -106,11 +106,11 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Cột tự động thay đổi */
     grid-auto-rows: minmax(30px, auto);
-    gap: 10px 20px;
+    gap: 15px 25px;
     padding-left: 10px;
-    max-height: 550px; /* Giới hạn chiều cao */
-    min-width: 300px; /* Đảm bảo không quá nhỏ */
-    max-width: 900px; /* Giới hạn tối đa */
+    max-height: 450px; /* Giới hạn chiều cao */
+    min-width: 320px; /* Đảm bảo không quá nhỏ */
+    max-width: 950px; /* Giới hạn tối đa */
     align-items: start; /* Căn các item từ trên xuống */
     position: relative; /* Để "Xem tất cả" cố định dưới cùng */
     padding-bottom: 40px;
@@ -120,17 +120,21 @@
 .dropdown-right li {
     list-style: none;
     font-size: 16px;
-    color: black;
     padding: 5px 0;
     white-space: nowrap; /* Ngăn chữ xuống dòng */
 }
 
+/* Hover trên mục con trong submenu */
+.dropdown-right li:hover {
+    /* background-color: #f5f5f5;
+    color: rgba(255, 255, 255, 0.5); */
+}
 
 /* Các mục trong dropdown */
 .dropdown-right li {
     list-style: none;
     font-size: 16px;
-    color: black;
+    /* color: rgba(255, 255, 255, 0.5); */
     padding: 5px 0;
     white-space: nowrap;
 }
@@ -138,16 +142,17 @@
 /* Định dạng mục submenu */
 .dropdown-menu li {
     list-style: none;
-    font-size: 16px;
-    color: black;
     padding: 5px 0;
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8); /* Màu sáng hơn */
 }
 
 /* Mục trong dropdown */
 .dropdown-menu .dropdown-item {
     padding: 10px 15px;
     font-size: 16px;
-    color: #333;
+    color: rgba(255, 255, 255, 0.5);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -156,7 +161,8 @@
 
 /* Hover trên mục dropdown */
 .dropdown-menu .dropdown-item:hover {
-    background-color: #f5f5f5;
+    background-color: #706e6e;
+    color: white;
 }
 
 /* Căn chỉnh submenu con theo dạng cột */
@@ -196,7 +202,7 @@
 
 /* === Xem tất cả ở góc dưới bên phải === */
 .view-all {
-    grid-column: span 2; /* Kéo dài trên 2 cột */
+    grid-column: span 4; /* Kéo dài trên 2 cột */
     display: flex;
     justify-content: center; /* Căn giữa nội dung */
     align-items: center;
@@ -252,4 +258,102 @@
 
 .dropdown-right[data-columns="3"] {
     grid-template-columns: repeat(3, 1fr);
+}
+
+.dropdown-right[data-columns="4"] {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.dropdown-right[data-columns="5"] {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.submenu-icon {
+    margin-left: auto;
+    float: right; 
+    margin-right: 10px;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.5);
+    transition: color 0.3s ease-in-out;
+}
+
+.dropdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.dropdown-item:hover .submenu-icon {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.nav-link.dropdown-toggle::after {
+    display: none !important;
+}
+
+.dropdown-toggle {
+    gap: 5px;
+}
+
+/* Màu chữ xám nhạt mặc định */
+.nav-link,
+.dropdown-menu .dropdown-item,
+.dropdown-right li {
+    color: #888; /* Màu chữ xám nhạt */
+    background: transparent; /* Không có nền */
+    transition: color 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+
+/* Mục đang được chọn */
+.nav-link.active,
+.dropdown-menu .dropdown-item.active,
+.dropdown-right li.active {
+    color: white !important; /* Chữ trắng */
+    background: #444; /* Nền xám đậm */
+}
+
+/* Hover trên menu chính & submenu */
+.nav-link:hover,
+.dropdown-menu .dropdown-item:hover {
+    color: white; /* Chữ trắng */
+    background: #555; /* Nền xám trung bình */
+}
+
+/* Khi hover vào .dropdown-right */
+.dropdown-right li:hover {
+    color: white !important; /* Chữ trắng */
+    background: #666 !important; /* Nền xám sáng */
+}
+
+/* Khi không active thì giữ màu xám nhạt */
+.nav-link:not(.active),
+.dropdown-menu .dropdown-item:not(.active),
+.dropdown-right li:not(.active) {
+    color: #888; /* Màu xám nhạt */
+    background: transparent;
+}
+
+/* Đổi màu icon trong submenu khi active */
+.dropdown-item.active .submenu-icon {
+    color: white !important;
+}
+
+/* Mặc định: Màu chữ xám nhạt */
+.nav-link {
+    color: #888; /* Xám nhạt */
+    transition: color 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+
+/* Hover vào menu chính -> Chữ trắng, nền tối hơn */
+.nav-link:hover,
+.navbar .dropdown:hover > .nav-link {
+    color: white !important;
+}
+
+/* Khi submenu hiển thị, menu chính vẫn sáng */
+.navbar .dropdown:hover > .nav-link,
+.navbar .dropdown:focus-within > .nav-link {
+    color: white !important;
 }

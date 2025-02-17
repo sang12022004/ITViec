@@ -6,6 +6,11 @@ function Navbar() {
     const [activeMenu, setActiveMenu] = useState(null);
     const [activeSubmenu, setActiveSubmenu] = useState(null);
     const [submenuHeight, setSubmenuHeight] = useState("auto");
+    const [activeItem, setActiveItem] = useState(null);
+
+    const handleSelect = (index) => {
+        setActiveItem(index);
+    };
     const menuRef = useRef(null);
 
     const getColumnCount = (submenu) => {
@@ -136,8 +141,13 @@ function Navbar() {
                                 }}
                                 ref={menuRef}
                             >
-                                <a className="nav-link dropdown-toggle" href="/" role="button">
+                                <a className={`nav-link dropdown-toggle ${activeMenu === index ? "selected" : ""}`} href="/" role="button">
                                     {menu.title}
+                                    {menu.submenu && Array.isArray(menu.submenu) && menu.submenu.length > 0 && (
+                                        <span className="submenu-icon">
+                                            <i className="fas fa-chevron-down"></i>
+                                        </span>
+                                    )}
                                 </a>
                                 {/* Submenu */}
                                 {activeMenu === index && menu.submenu.length > 0 && (
@@ -147,10 +157,15 @@ function Navbar() {
                                             {menu.submenu.map((sub, subIndex) => (
                                                 <li 
                                                     key={subIndex} 
-                                                    className="dropdown-item"
+                                                    className={`dropdown-item ${activeSubmenu === subIndex ? "active" : ""}`}
                                                     onMouseEnter={() => setActiveSubmenu(subIndex)}
                                                 >
                                                     {sub.title}
+                                                    {sub.submenu && Array.isArray(sub.submenu) && sub.submenu.length > 0 && (
+                                                        <span className="submenu-icon">
+                                                            <i className="fas fa-chevron-right"></i> {/* FontAwesome */}
+                                                        </span>
+                                                    )}
                                                 </li>
                                             ))}
                                         </div>
