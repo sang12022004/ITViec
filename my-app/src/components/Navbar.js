@@ -108,7 +108,7 @@ function Navbar() {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark custom-navbar">
-            <div className="container">
+            <div className="container-fluid">
                 <div className="navbar-container collapse navbar-collapse" id="navbarNav">
                     {/* Logo */}
                     <div className="logo-navbar">

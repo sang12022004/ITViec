@@ -1,7 +1,7 @@
 import React from "react";
-// import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar";
 import SearchBar from "./components/SearchBar";
-// import Banner from "./components/Banner";
+import Banner from "./components/Banner";
 // import Title from "./components/Title";
 // import FilterBar from "./components/FilterBar";
 // import Footer from "./components/FooterBar";
@@ -10,15 +10,14 @@ import SearchBar from "./components/SearchBar";
 
 function App() {
   return (
-    <div class="main">
-      <div class="background"></div>
-      {/* <Navbar/> */}
+    <div className="main">
+      <div className="background"></div>
+      <Navbar/>
       <SearchBar/>
-      {/* <div class="wrapper">
+      <div class="wrapper">
         <Banner />
-        <div class="gray-background"></div>
       </div>
-      <Title/>
+      {/* <Title/>
       <FilterBar/>
       <JobListBar/>
       <Pagination />

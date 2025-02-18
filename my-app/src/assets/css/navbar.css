@@ -7,21 +7,36 @@
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
     box-shadow: 0px 1px 2px rgba(255, 255, 255, 0.1);
     background: linear-gradient(to right, black, #3b0000);
+    padding: 0;
 }
 
 /* Navbar container */
 .navbar-container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     height: 100%;
-    width: 100%;
+    width: 100vw;
+    min-width: 1300px;
+    max-width: 1900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.navbar-nav:first-child {
+    flex: 1; /* Chiếm phần lớn không gian nhưng không quá rộng */
+    min-width: 0;
 }
 
 /* Căn phải phần Nhà tuyển dụng, Đăng nhập, Ngôn ngữ */
 .navbar-nav:last-child {
     margin-left: auto;
+    padding-right: 40px;
+    display: flex;
+    gap: 20px; /* Tạo khoảng cách giữa các mục bên phải */
 }
 
 .navbar-nav {

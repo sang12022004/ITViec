@@ -10,9 +10,6 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 // Import Font Awesome
 import "@fortawesome/fontawesome-free/css/all.min.css"
 
-// Import CSS riêng của bạn
-import "./assets/css/style.css";
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
