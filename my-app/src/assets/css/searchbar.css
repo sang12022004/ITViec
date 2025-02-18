@@ -1,0 +1,159 @@
+/* ====== SEARCH ======
+/* Định dạng vùng chứa thanh tìm kiếm */
+/* .search-container {
+    background: linear-gradient(to right, black, #3b0000);
+    padding: 30px 0;
+    width: 100%;
+} */
+
+/* Căn chỉnh thanh tìm kiếm */
+/* .search-bar {
+    display: flex;
+    gap: 10px;
+    max-width: 900px;
+    margin: auto;
+} */
+
+/* Dropdown chọn thành phố */
+/* .search-dropdown {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 20px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+} */
+
+/* Ô nhập từ khóa */
+/* .search-input {
+    flex: 1;
+    font-size: 20px;
+    padding: 10px 15px;
+    height: 70px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+} */
+
+/* Nút tìm kiếm */
+/* .search-btn {
+    background: red;
+    color: white;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+} */
+
+/* 
+kjkl kfjasklfj */
+.search-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    gap: 12px;
+    width: 100vw; /* Chiếm toàn bộ chiều rộng */
+    height: 100px; /* Đặt chiều cao phù hợp */
+    background: linear-gradient(to right, black, #3b0000);
+    padding: 20px;
+}
+
+/* Dropdown button */
+.dropdown-button {
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+    padding: 12px 15px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-button:hover {
+    background-color: #f8f8f8;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    width: 200px;
+    padding: 12px 15px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    margin-top: 5px;
+    z-index: 1000;
+    display: none;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-item {
+    padding: 12px 15px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f8f8;
+}
+
+/* Input search */
+.search-input {
+    flex-grow: 1;
+    max-width: 400px;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: none;
+}
+
+.search-input:focus {
+    border-color: #007bff;
+}
+
+/* Search button */
+.search-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    width: 200px; /* Đảm bảo cùng chiều rộng với dropdown */
+    height: 50px; /* Đảm bảo cùng chiều cao với input */
+    padding: 12px 20px; /* Khoảng cách phù hợp */
+    gap: 10px;;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: red;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.search-btn:hover {
+    background-color: darkred;
+}
+
+.icon-text {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Khoảng cách giữa icon và chữ */
+}
