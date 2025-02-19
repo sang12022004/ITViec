@@ -1,66 +1,66 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-function Pagination() {
-    useEffect(() => {
-      const totalPages = 50; 
-      let currentPage = 1;
+function Pagination({ currentPage, setCurrentPage, totalPages }) {
+    function renderPagination() {
+        const buttons = [];
 
-      function renderPagination() {
-          const pagination = document.getElementById("pagination");
-          pagination.innerHTML = "";
+        // Nút Previous
+        if (currentPage > 1) {
+            buttons.push(
+                <button key="prev" onClick={() => setCurrentPage(currentPage - 1)}>
+                    {"<"}
+                </button>
+            );
+        }
 
-          const createButton = (text, page, isActive = false, isDisabled = false) => {
-              const button = document.createElement("button");
-              button.textContent = text;
-              if (isActive) button.classList.add("active");
-              if (isDisabled) button.disabled = true;
-              button.addEventListener("click", () => {
-                  if (!isDisabled) {
-                      currentPage = page;
-                      renderPagination();
-                  }
-              });
-              return button;
-          };
+        // Trang đầu
+        buttons.push(
+            <button key="1" onClick={() => setCurrentPage(1)} className={currentPage === 1 ? "active" : ""}>
+                1
+            </button>
+        );
 
-          if (currentPage !== 1) {
-              // Nút Previous
-              pagination.appendChild(createButton("<", currentPage - 1, false, currentPage === 1));
-          }
+        // Dấu ...
+        if (currentPage > 4) {
+            buttons.push(<span key="dots1">...</span>);
+        }
 
-          // Trang đầu
-          pagination.appendChild(createButton("1", 1, currentPage === 1));
+        // Số trang gần trang hiện tại
+        for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
+            buttons.push(
+                <button key={i} onClick={() => setCurrentPage(i)} className={currentPage === i ? "active" : ""}>
+                    {i}
+                </button>
+            );
+        }
 
-          if (currentPage > 4) {
-              pagination.appendChild(createButton("...", currentPage - 2, false, true));
-          }
+        // Dấu ...
+        if (currentPage < totalPages - 3) {
+            buttons.push(<span key="dots2">...</span>);
+        }
 
-          for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
-              pagination.appendChild(createButton(i, i, currentPage === i));
-          }
+        // Trang cuối
+        if (totalPages > 1) {
+            buttons.push(
+                <button key={totalPages} onClick={() => setCurrentPage(totalPages)} className={currentPage === totalPages ? "active" : ""}>
+                    {totalPages}
+                </button>
+            );
+        }
 
-          if (currentPage < totalPages - 3) {
-              pagination.appendChild(createButton("...", currentPage + 2, false, true));
-          }
+        // Nút Next
+        if (currentPage < totalPages) {
+            buttons.push(
+                <button key="next" onClick={() => setCurrentPage(currentPage + 1)}>
+                    {">"}
+                </button>
+            );
+        }
 
-          // Trang cuối
-          if (totalPages > 1) {
-              pagination.appendChild(createButton(totalPages, totalPages, currentPage === totalPages));
-          }
+        return buttons;
+    }
 
-          if (currentPage !== totalPages) {
-              // Nút Next
-              pagination.appendChild(createButton(">", currentPage + 1, false, currentPage === totalPages));
-          }
-      }
-
-      // Khởi tạo pagination khi trang tải lên
-      renderPagination();
-    }, []);
-
-    return (
-        <div className="pagination" id="pagination"></div>
-    );
+    return <div className="pagination">{renderPagination()}</div>;
 }
 
 export default Pagination;

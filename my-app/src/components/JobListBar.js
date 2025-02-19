@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import Pagination from "./Pagination";
 import "../assets/css/jobbar.css"
 
 function JobListBar() {
@@ -9,6 +10,11 @@ function JobListBar() {
     const jobListContainerRef = useRef(null);   
     const [selectedJobId, setSelectedJobId] = useState(null);
     const [selectedCompany, setSelectedCompany] = useState(null);
+
+    // Số trang & phân trang
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 4;
+    const [totalPages, setTotalPages] = useState(1);
 
     useEffect(() => {
         if (!selectedJobId) return;
@@ -33,6 +39,7 @@ function JobListBar() {
         // Gọi API danh sách công việc
         axios.get("https://67ad4bd83f5a4e1477dd4a73.mockapi.io/api/jobs/jobs")
             .then((response) => {
+                setTotalPages(Math.ceil(response.data.length / itemsPerPage));
                 setJobs(response.data);
             })
             .catch((error) => {
@@ -200,6 +207,9 @@ function JobListBar() {
         };
     }, [selectedJob]); 
 
+    // Lọc danh sách jobs theo trang hiện tại
+    const displayedJobs = jobs.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
     // Hàm tính thời gian đăng (X giờ/ngày trước)
     const timeAgo = (dateString) => {
         const postedDate = new Date(dateString);
@@ -227,10 +237,10 @@ function JobListBar() {
         <div className="row">
             <div className="col-md-5 job-list-container" ref={jobListContainerRef}>
                 <div className="job-list">
-                    {jobs.length === 0 ? (
+                    {displayedJobs.length === 0 ? (
                         <p>Đang tải danh sách công việc...</p>
                     ) : (
-                        jobs.map((job) => {
+                        displayedJobs.map((job) => {
                             const company = companies[job.company_id] || {};
 
                             const top3Section = job.content.find((section) => section.section === "Top 3 reasons to join us");
@@ -415,6 +425,8 @@ function JobListBar() {
             )}
             </div>
         </div>
+        {/* Thêm Pagination */}
+        <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} />
     </div>   
     );
 }
