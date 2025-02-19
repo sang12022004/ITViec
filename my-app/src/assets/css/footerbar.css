@@ -1,0 +1,137 @@
+/* ===== Footer CSS ===== */
+
+.footer {
+    background: linear-gradient(to right, black, #3b0000); /* Chỉnh màu nền cho gần giống */
+    color: white;
+    padding: 40px 0;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px; /* Giảm kích thước chữ cho giống ảnh */
+}
+
+.footer-background {
+    width: 100%;
+}
+
+/* === Logo Container (Căn trái) === */
+.footer-logo-container {
+    text-align: center;  /* Căn chữ và nội dung về bên trái */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Căn toàn bộ nội dung về trái */
+    justify-content: flex-start;
+    top: 0;
+    left: 0;
+}
+
+/* Logo */
+.footer-logo img {
+    width: 110px; /* Giữ nguyên kích thước */
+    margin-bottom: 5px;
+}
+
+.footer-slogan {
+    font-size: 16px;
+    color: white;
+    margin-top: -10px;
+}
+
+/* === Social Icons (Căn trái) === */
+.social-icons {
+    display: flex;
+    justify-content: flex-start; /* Căn về trái */
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.social-icons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: 1px solid #999;
+    border-radius: 50%;
+    font-size: 16px;
+    color: #999;
+    transition: none;
+}
+
+/* Không đổi màu khi hover */
+.social-icons a:hover {
+    color: #999;
+}
+
+/* === Cột Footer === */
+.footer .col-md-2, .footer .col-md-3 {
+    min-width: 180px; /* Giảm chiều rộng cột */
+    margin-bottom: 10px;
+}
+
+/* === Tiêu đề của các cột === */
+.footer h5 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* === Danh sách Links === */
+.footer-links, .footer-contact {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li, .footer-contact li {
+    margin-bottom: 6px;
+}
+
+/* === Link text === */
+.footer-links a {
+    color: #b0b0b0;
+    text-decoration: none;
+    transition: none;
+}
+
+/* Không đổi màu khi hover */
+.footer-links a:hover {
+    color: #b0b0b0;
+}
+
+/* === Liên hệ === */
+.footer-contact li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #b0b0b0;
+}
+
+/* Icon liên hệ */
+.footer-contact i {
+    color: #b0b0b0;
+    font-size: 14px;
+}
+
+/* === Dòng bản quyền === */
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 12px;
+    color: #b0b0b0;
+    padding-top: 10px;
+}
+
+/* === Responsive chỉnh lại vị trí === */
+@media (max-width: 768px) {
+    .footer .row {
+        text-align: center;
+    }
+
+    .footer-logo-container {
+        text-align: center;
+    }
+
+    .footer-links, .footer-contact {
+        text-align: center;
+    }
+}

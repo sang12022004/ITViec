@@ -506,7 +506,6 @@ body {
     cursor: not-allowed;
 }
 
-
 .pagination {
     display: flex;
     align-items: center;
@@ -540,71 +539,4 @@ body {
 .pagination button:disabled {
     color: gray;
     cursor: not-allowed;
-}
-
-/* ===== Footer ===== */
-/* Footer */
-.footer {
-    background: linear-gradient(to right, black, #3b0000);
-    color: white;
-    padding: 40px 0;
-    justify-content: center;
-    align-items: center;
-}
-
-.footer-background {
-    width: 100%;
-}
-
-/* Logo */
-.footer-logo img {
-    width: 120px;
-}
-.footer-slogan {
-    font-size: 14px;
-    color: #ccc;
-    margin-top: 5px;
-}
-
-/* Cột footer */
-.footer .col-md-2, .footer .col-md-3 {
-    min-width: 200px;
-    margin-bottom: 20px;
-}
-
-/* Social icons */
-.social-icons a {
-    display: inline-block;
-    color: white;
-    font-size: 18px;
-    margin-right: 10px;
-    transition: 0.3s;
-}
-.social-icons a:hover {
-    color: #ffcc00;
-}
-
-/* Links */
-.footer-links, .footer-contact {
-    list-style: none;
-    padding: 0;
-}
-.footer-links li, .footer-contact li {
-    margin-bottom: 4px;
-}
-.footer-links a {
-    color: white;
-    text-decoration: none;
-    transition: 0.3s;
-}
-.footer-links a:hover {
-    color: #ffcc00;
-}
-
-/* Dòng bản quyền */
-.footer-bottom {
-    text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 20px;
-    color: #ccc;
 }
