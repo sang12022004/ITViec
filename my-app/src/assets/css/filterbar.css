@@ -4,61 +4,91 @@
     justify-content: space-between;
     align-items: center;
     background: white;
-    padding: 15px;
-    border-radius: 8px;
+    padding: 12px;
+    border-radius: 12px;
     width: 96%;
-    min-width: 1200px;
     max-width: 1300px;
-    margin-top: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 5px auto;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 /* Bộ lọc chính (Cấp bậc, Hình thức làm việc, Mức lương, Lĩnh vực) */
 .filters {
     display: flex;
-    gap: 10px;
+    gap: 12px; /* Khoảng cách giữa các nút */
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
+/* Các nút lọc (Cấp bậc, Hình thức làm việc, Mức lương, Lĩnh vực) */
 .filter-btn {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    padding: 10px 15px;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-weight: 500;
-    color: black;
+    all: unset;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center;
+    border-radius: 50px !important; /* Bo tròn hoàn toàn */
+    padding: 10px 18px !important; /* Giữ kích thước vừa phải */
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    background: #ffffff !important;
+    border: 1px solid #e5e5e5 !important;
+    color: #333 !important;
+    transition: all 0.2s ease-in-out !important;
+    cursor: pointer !important;
+    min-width: auto !important;
+    flex-shrink: 0 !important;
+    gap: 6px !important; /* Khoảng cách giữa chữ và icon */
 }
 
-/* Nút bộ lọc */
+/* Icon trong nút lọc */
+.filter-btn i {
+    font-size: 12px !important; /* Giữ icon nhỏ hơn chữ */
+}
+
+/* Nút "Bộ lọc" (Filter) */
 .filter-control {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px 15px;
-    font-size: 14px;
-    font-weight: 500;
-    color: black;
+    all: unset;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center;
+    padding: 8px 16px !important; /* Thu gọn kích thước */
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    background: #ffffff !important;
+    border: 1px solid #e5e5e5 !important;
+    color: #333 !important;
+    cursor: pointer !important;
+    border-radius: 12px !important; /* Bo góc nhẹ, không quá tròn */
+    min-width: auto !important;
+    flex-shrink: 0 !important;
+    gap: 6px !important; /* Khoảng cách giữa icon và chữ */
 }
 
-.filter-btn, .filter-control {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    padding: 10px 15px;
-    font-size: 14px;
-    font-weight: 500;
-    color: black;
+/* Icon trong nút "Bộ lọc" */
+.filter-control i {
+    font-size: 16px !important; /* Làm icon lớn hơn một chút */
 }
 
 /* Hiệu ứng hover */
 .filter-btn:hover, .filter-control:hover {
-    background: #e9ecef;
+    background: #f8f8f8 !important;
+    border-color: #dcdcdc !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .filter-bar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .filters {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .filter-btn, .filter-control {
+        width: 100%;
+        text-align: center;
+    }
 }
