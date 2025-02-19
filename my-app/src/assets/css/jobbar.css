@@ -30,12 +30,57 @@
 .job-card {
     background: #fff;
     border: 1px solid #ddd;
-    border-radius: 10px;
+    border-radius: 12px;
     margin-bottom: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
+    max-width: 700px;
+    max-height: 500px;
     margin-bottom: 8px;
     position: relative;
+    padding: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+.selected-job {
+    position: relative;
+    outline: 1px solid red;
+    border-radius: 16px;
+    z-index: 100;
+}
+
+/* Tạo góc bo tròn */
+.selected-job::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    height: 98%;
+    width: 7px;
+    align-self: center;
+    background-color: red;
+    border-top-right-radius: 12px;
+    border-end-end-radius: 12px;
+    z-index: 100;
+}
+
+.job-list-container {
+    position: relative;
+    overflow: visible;
+}
+
+/* Tạo hình tam giác bên phải */
+.selected-job::after {
+    content: "";
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid red;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
 }
 
 .job-card:last-of-type {
@@ -62,17 +107,18 @@
 .company-logo {
     width: 50px;
     height: 50px;
-    border-radius: 0px;
+    border-radius: 3px;
     margin-right: 10px;
-}
-
-.company-name {
-    font-size: 10pt;
-    margin-top: 20px;
+    border: 1px solid rgb(97, 95, 95);
 }
 
 .salary {
     margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.salary i {
+    margin-right: 5px;
 }
 
 .salary, .salary a, .salary i {
@@ -83,6 +129,10 @@
 .job-location {
     font-size: 14px;
     color: #666;
+    display: block;
+    width: 100%;
+    gap: 5px;
+    word-break: break-word;
 }
 
 .job-tags .badge {
@@ -92,12 +142,20 @@
     margin-right: 5px;
 }
 
+.job-tags {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 5px;
+}
+
 .badge-tag {
     font-size: 14px;
     padding: 6px 12px;
     border-radius: 20px;
     margin-right: 5px;
     border: 1px solid rgb(204, 202, 202);
+    display: inline-block;
+    white-space: nowrap;
 }
 
 .time-and-badge {
@@ -108,41 +166,68 @@
     margin-bottom: 20px;
 }
 
-/* Badge HOT */
+/* Base HOT badge */
 .hot-badge {
-    background: orange;
     color: white;
     font-weight: bold;
-    font-size: 12px;
-    padding: 4px 10px;
-    border-radius: 4px;
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 3px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
     position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(5%, 30%);
+    top: 10px;
+    right: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
 }
 
-/* Mũi nhọn tam giác bên dưới HOT */
-.hot-badge::after {
+/* SUPER HOT (Đỏ) */
+.super-hot {
+    background: red;
+}
+
+.super-hot::after {
     content: "";
     position: absolute;
     bottom: -5px;
-    right: 8px;
+    right: 0px;
+    width: 0px;
+    height: 0px;
+    border-left: 8px solid transparent;
+    border-right: 0px solid transparent;
+    border-top: 6px solid red;
+}
+
+/* HOT (Cam) */
+.normal-hot {
+    background: orange;
+}
+
+.normal-hot::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    right: 0px;
     width: 0;
     height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid orange;
+    border-left: 8px solid transparent;
+    border-right: 0px solid transparent;
+    border-top: 6px solid orange;
+}
+
+/* Icon ngọn lửa */
+.fire-icon {
+    margin-right: 5px;
+    font-size: 14px;
 }
 
 .dot-hr {
     border: none;
     border-top: 1px dotted #000;
-    margin-top: 20px;
 }
 
 .custom-list {
@@ -153,7 +238,7 @@
 .custom-list li {
     position: relative;
     padding-left: 20px;
-    font-size: 10px; 
+    font-size: 14px; 
     font-weight: bold;
     color: black;
     margin-bottom: 10px;
@@ -182,6 +267,7 @@
     width: 90px;
     height: 90px;
     border-radius: 5px;
+    border: 1px solid rgb(97, 95, 95);
 }
 
 .job-title h4 {
@@ -227,6 +313,7 @@
 
 /* ======= Nút mở ngoài ======= */
 .external-link {
+    margin-left: 5px;
     font-size: 14x;
     color: blue;
 }
@@ -297,6 +384,7 @@
 .card-content.fixed {
     height: 90%;
     width: 100%;
+    max-width: 700px;
     position: fixed;
     top: 20px;
     overflow-y: auto;
@@ -317,14 +405,17 @@
     flex-direction: column;
     flex-grow: 1;
     overflow: hidden;
+    margin: -16px;
+    border-radius: 6px;
+    z-index: 19;
 }
 
 .skills-job {
     display: flex;
-    align-items: center;
-    margin-top: 15px;
-    position: relative;
-    gap: 10px;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 5px;
+    width: 100%;
 }
 
 .title-top-in-content {
@@ -378,12 +469,23 @@
 }
 
 .company-name {
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+.company-name-detail {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.company-name-in-info {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
+    margin-top: 10px;
 }
 
 .company-description {
-    font-size: 9px;
+    font-size: 10px;
     color: #666;
 }
 

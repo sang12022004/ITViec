@@ -226,69 +226,80 @@ function JobListBar() {
     <div className="body-content">
         <div className="row">
             <div className="col-md-5 job-list-container" ref={jobListContainerRef}>
-            <div className="job-list">
-                {jobs.length === 0 ? (
-                    <p>Đang tải danh sách công việc...</p>
-                ) : (
-                    jobs.map((job) => {
-                        const company = companies[job.company_id] || {};
+                <div className="job-list">
+                    {jobs.length === 0 ? (
+                        <p>Đang tải danh sách công việc...</p>
+                    ) : (
+                        jobs.map((job) => {
+                            const company = companies[job.company_id] || {};
 
-                        const top3Section = job.content.find((section) => section.section === "Top 3 reasons to join us");
+                            const top3Section = job.content.find((section) => section.section === "Top 3 reasons to join us");
 
-                        return (
-                            <div key={job.id} className="card job-card" onClick={() => setSelectedJobId(job.id)} style={{ cursor: "pointer" }}>
-                                <div className="card-body position-relative p-3">
-                                    <div className="time-and-badge d-flex justify-content-between align-items-center">
-                                        <p className="text-muted small mb-0">{timeAgo(job.posted_time)}</p>
-                                        {job.hot_level > 0 && <span className="hot-badge">HOT</span>}
-                                    </div>
-
-                                    <h6 className="job-title">
-                                        <strong>{job.title}</strong>
-                                    </h6>
-
-                                    <div className="align-items-center d-flex">
-                                        <img src={company.logo_url || "/assets/images/default-company.png"} alt={company.name || "Company"} className="company-logo" />
-                                        <div className="company-info">
-                                            <span className="company-name">{company.name || "Không rõ"}</span>
-                                            <p className="text-muted small">{company.slogan || ""}</p>
+                            return (
+                                <div 
+                                    key={job.id} 
+                                    className={`card job-card ${selectedJobId === job.id ? "selected-job" : ""}`} 
+                                    onClick={() => setSelectedJobId(job.id)} 
+                                    style={{ cursor: "pointer" }}>
+                                    <div 
+                                        className= "card-body position-relative p-3"
+                                        style={job.hot_level === 1 ? { backgroundColor: "#FDF1E6", borderRadius: "6px"} : {}}>
+                                        <div className="time-and-badge d-flex justify-content-between align-items-center">
+                                            <p className="text-muted small mb-0">{timeAgo(job.posted_time)}</p>
+                                            {job.hot_level > 0 && job.hot_level < 3 && (
+                                                <span className={`hot-badge ${job.hot_level === 1 ? "super-hot" : "normal-hot"}`}>
+                                                    {job.hot_level === 1 && <span className="fire-icon">🔥</span>}
+                                                    {job.hot_level === 1 ? " SUPER HOT" : "HOT"}
+                                                </span>
+                                            )}
                                         </div>
+
+                                        <h6 className="job-title">
+                                            <strong>{job.title}</strong>
+                                        </h6>
+
+                                        <div className="align-items-center d-flex">
+                                            <img src={company.logo_url || "/assets/images/default-company.png"} alt={company.name || "Company"} className="company-logo" />
+                                            <div className="company-info">
+                                                <span className="text-muted small company-name">{company.name || "Không rõ"}</span>
+                                                {/* <p className="text-muted small">{company.slogan || ""}</p> */}
+                                            </div>
+                                        </div>
+
+                                        <p className="salary">
+                                            <i className="fa-solid fa-dollar-sign"></i> 
+                                            <a href="/">Đăng nhập để xem mức lương</a>
+                                        </p>
+
+                                        <hr className="dot-hr" />
+
+                                        <p className="job-location">
+                                            <i className="fa-solid fa-building"></i> {job.work_type.includes("at_office") ? "Tại văn phòng" : "Remote"} <br />
+                                            <i className="fa-solid fa-location-dot"></i> {job.location}
+                                        </p>
+
+                                        <div className="job-tags">
+                                            {job.skills.map((skill, idx) => (
+                                                <span key={idx} className="badge-tag text-dark">{skill}</span>
+                                            ))}
+                                        </div>
+
+                                        {top3Section && (
+                                            <>
+                                                <hr className="dot-hr" />
+                                                <ul className="custom-list">
+                                                    {top3Section.items.map((item, idx) => (
+                                                        <li key={idx}>{item.title}</li>
+                                                    ))}
+                                                </ul>
+                                            </>
+                                        )}
                                     </div>
-
-                                    <p className="salary">
-                                        <i className="fa-solid fa-dollar-sign"></i> 
-                                        <a href="/">Đăng nhập để xem mức lương</a>
-                                    </p>
-
-                                    <hr className="dot-hr" />
-
-                                    <p className="job-location">
-                                        <i className="fa-solid fa-building"></i> {job.work_type.includes("at_office") ? "Tại văn phòng" : "Remote"} <br />
-                                        <i className="fa-solid fa-location-dot"></i> {job.location}
-                                    </p>
-
-                                    <div className="job-tags">
-                                        {job.skills.map((skill, idx) => (
-                                            <span key={idx} className="badge-tag text-dark">{skill}</span>
-                                        ))}
-                                    </div>
-
-                                    {top3Section && (
-                                        <>
-                                            <hr className="dot-hr" />
-                                            <ul className="custom-list">
-                                                {top3Section.items.map((item, idx) => (
-                                                    <li key={idx}>{item.title}</li>
-                                                ))}
-                                            </ul>
-                                        </>
-                                    )}
                                 </div>
-                            </div>
-                        );
-                    })
-                )}
-            </div>
+                            );
+                        })
+                    )}
+                </div>
             </div>
             <div className="col-md-7 position-relative">
             {selectedJob && (
@@ -306,9 +317,10 @@ function JobListBar() {
                                     <i className="fa-solid fa-up-right-from-square"></i>
                                 </a>
                             </h3>
-                            <p className="company-name">{selectedCompany?.name || "Không rõ"}</p>
+                            <p className="company-name-detail">{selectedCompany?.name || "Không rõ"}</p>
                             <p className="salary">
-                                <i className="fa-solid fa-dollar-sign"></i> {selectedJob.salary?.amount || "Không rõ"}
+                                <i className="fa-solid fa-dollar-sign"></i> 
+                                <a href="/">Đăng nhập để xem mức lương</a>
                             </p>
                         </div>
                     </div>
@@ -320,9 +332,15 @@ function JobListBar() {
 
                     <div className="scrollable-section">
                         <p className="job-location">
-                            <i className="fa-solid fa-location-dot"></i> {selectedJob.location} <br/> 
-                            <i className="fa-solid fa-building"></i> 
-                            {selectedJob.work_type.includes("at_office") ? "Tại văn phòng" : "Remote"} <br/>   
+                            <i className="fa-solid fa-location-dot">
+                            </i> 
+                            {selectedJob.location} 
+                            <a href={selectedJob.apply_url} 
+                                className="external-link"> 
+                                <i className="fa-solid fa-up-right-from-square"></i>
+                            </a>
+                            <br/>  
+                            <i className="fa-solid fa-building"></i> {selectedJob.work_type.includes("at_office") ? "Tại văn phòng" : "Remote"} <br/>   
                             <i className="fas fa-clock"></i> {new Date(selectedJob.posted_time).toLocaleDateString()}
                         </p>
 
@@ -353,18 +371,25 @@ function JobListBar() {
                         {/* Thông tin công ty */}
                         {selectedCompany && (
                             <div className="company-card">
-                                <h4 className="company-name">{selectedCompany.name}</h4>
+                                <h4 className="company-name-in-info">{selectedCompany.name}</h4>
                                 <p className="company-description">{selectedCompany.slogan}</p>
 
                                 <div className="row mt-3">
+                                <div className="col-md-4">
+                                        <p className="company-label">Mô hình công ty</p>
+                                        <p className="company-value">{selectedCompany.company_model}</p>
+                                    </div>
                                     <div className="col-md-4">
-                                        <p className="company-label">Ngành nghề</p>
+                                        <p className="company-label">Lĩnh vực công ty</p>
                                         <p className="company-value">{selectedCompany.industry}</p>
                                     </div>
                                     <div className="col-md-4">
                                         <p className="company-label">Quy mô</p>
                                         <p className="company-value">{selectedCompany.company_size} nhân viên</p>
                                     </div>
+                                    
+                                </div>
+                                <div className="row mt-3">
                                     <div className="col-md-4">
                                         <p className="company-label">Quốc gia</p>
                                         <p className="company-value">
@@ -372,6 +397,14 @@ function JobListBar() {
                                                 alt={selectedCompany.country} 
                                                 className="country-flag"/> {selectedCompany.country}
                                         </p>
+                                    </div>
+                                    <div className="col-md-4">
+                                        <p className="company-label">Thời gian làm việc</p>
+                                        <p className="company-value">{selectedCompany.working_days}</p>
+                                    </div>
+                                    <div className="col-md-4">
+                                        <p className="company-label">Làm việc ngoài giờ</p>
+                                        <p className="company-value">{selectedCompany.overtime_policy}</p>
                                     </div>
                                 </div>
                             </div>
