@@ -1,4 +1,5 @@
 import React from "react";
+import "../assets/css/Titlebar.css"
 
 function Title() {
   return (
