@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import "../assets/css/jobbar.css"
 
 function JobListBar() {
     const [jobs, setJobs] = useState([]);
@@ -222,9 +223,9 @@ function JobListBar() {
     };
 
     return (
-        <div className="body-content">
+    <div className="body-content">
         <div className="row">
-          <div className="col-md-5 job-list-container" ref={jobListContainerRef}>
+            <div className="col-md-5 job-list-container" ref={jobListContainerRef}>
             <div className="job-list">
                 {jobs.length === 0 ? (
                     <p>Đang tải danh sách công việc...</p>
@@ -288,9 +289,9 @@ function JobListBar() {
                     })
                 )}
             </div>
-          </div>
-          <div className="col-md-7">
-          {selectedJob && (
+            </div>
+            <div className="col-md-7 position-relative">
+            {selectedJob && (
             <div className="card card-content">
                 <div className="card-body">
                     <div className="job-header">
@@ -379,9 +380,9 @@ function JobListBar() {
                 </div>
             </div>
             )}
-          </div>
+            </div>
         </div>
-      </div>   
+    </div>   
     );
 }
 
