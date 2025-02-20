@@ -2,24 +2,23 @@ import React, { useState, useEffect } from "react";
 import "../assets/css/filterbar.css";
 import AdvancedFilterModal from "./AdvancedFilterModal";
 
-function FilterBar() {
+function FilterBar({
+  selectedLevels, setSelectedLevels,
+  selectedWorkTypes, setSelectedWorkTypes,
+  salaryRange, setSalaryRange,
+  appliedSalary, setAppliedSalary,
+  selectedFields, setSelectedFields,
+  selectedCompanyTypes, setSelectedCompanyTypes
+}) {
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
   const [isLevelOpen, setIsLevelOpen] = useState(false);
   const [isWorkTypeOpen, setIsWorkTypeOpen] = useState(false);
   const [isSalaryOpen, setIsSalaryOpen] = useState(false);
-
-  const [selectedLevels, setSelectedLevels] = useState([]);
-  const [selectedWorkTypes, setSelectedWorkTypes] = useState([]);
-  const [salaryRange, setSalaryRange] = useState([500, 10000]);
-  const [appliedSalary, setAppliedSalary] = useState(null);
-
   const [isFieldOpen, setIsFieldOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedFields, setSelectedFields] = useState([]);
-  const [selectedCompanyTypes, setSelectedCompanyTypes] = useState([]);
 
   const levels = ["Fresher", "Junior", "Senior", "Manager"];
-  const workTypes = ["Tại văn phòng", "Làm từ xa", "Linh hoạt"];
+  const workTypes = ["at_office", "remote", "hybrid"];
 
   // Xử lý chọn/bỏ chọn cấp bậc
   const handleLevelChange = (level) => {
@@ -112,12 +111,23 @@ function FilterBar() {
     return acc;
   }, {});
 
+
+  const clearFilters = () => {
+    setSelectedLevels([]);
+    setSelectedWorkTypes([]);
+    setSelectedFields([]);
+    setSelectedCompanyTypes([]);
+    setAppliedSalary(null);
+    setSalaryRange([500, 10000]); // Reset lại mức lương
+  };
+
    // Kiểm tra nếu có ít nhất 1 filter đang được chọn
    const hasFilters =
-   selectedLevels.length > 0 ||
-   selectedWorkTypes.length > 0 ||
-   appliedSalary !== null ||
-   selectedFields.length > 0;
+    selectedLevels.length > 0 ||
+    selectedWorkTypes.length > 0 ||
+    appliedSalary !== null ||
+    selectedFields.length > 0 ||
+    selectedCompanyTypes.length > 0;
 
   return (
     <div className="filter-bar">
@@ -299,13 +309,7 @@ function FilterBar() {
           salaryRange[0] !== 500 || salaryRange[1] !== 10000) && (
           <button 
             className="clear-all-btn" 
-            onClick={() => {
-              setSelectedLevels([]);
-              setSelectedWorkTypes([]);
-              setSelectedFields([]);
-              setAppliedSalary(null);
-              setSalaryRange([500, 10000]);
-            }}
+            onClick={clearFilters}
           >
             Xoá
           </button>

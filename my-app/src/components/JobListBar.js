@@ -3,47 +3,36 @@ import axios from "axios";
 import Pagination from "./Pagination";
 import "../assets/css/jobbar.css"
 
-function JobListBar() {
-    const [jobs, setJobs] = useState([]);
-    const [companies, setCompanies] = useState({});
+function JobListBar({ jobs, currentPage, setCurrentPage, totalPages }) {
     const [selectedJob, setSelectedJob] = useState(null);
+    const [selectedCompany, setSelectedCompany] = useState(null);
+    const [companies, setCompanies] = useState({});
     const jobListContainerRef = useRef(null);   
     const [selectedJobId, setSelectedJobId] = useState(null);
-    const [selectedCompany, setSelectedCompany] = useState(null);
+   
 
     // Số trang & phân trang
-    const [currentPage, setCurrentPage] = useState(1);
+    
     const itemsPerPage = 4;
-    const [totalPages, setTotalPages] = useState(1);
+    
 
     useEffect(() => {
-        if (!selectedJobId) return;
+        if (!selectedJob) return;
     
-        // Gọi API lấy thông tin công việc dựa trên ID
-        axios.get(`https://67ad4bd83f5a4e1477dd4a73.mockapi.io/api/jobs/jobs/${selectedJobId}`)
-            .then((response) => {
-                setSelectedJob(response.data);
-                
-                // Gọi tiếp API lấy thông tin công ty dựa trên company_id
-                return axios.get(`https://67ad4bd83f5a4e1477dd4a73.mockapi.io/api/jobs/companies/${response.data.company_id}`);
-            })
-            .then((response) => {
-                setSelectedCompany(response.data);
-            })
-            .catch((error) => {
-            
-            });
-    }, [selectedJobId]); // Chạy lại khi selectedJobId thay đổi    
+        axios.get(`https://67ad4bd83f5a4e1477dd4a73.mockapi.io/api/jobs/companies/${selectedJob.company_id}`)
+          .then((res) => setSelectedCompany(res.data))
+          .catch((error) => console.error("Lỗi tải thông tin công ty:", error));
+      }, [selectedJob]);
 
     useEffect(() => {
         // Gọi API danh sách công việc
-        axios.get("https://67ad4bd83f5a4e1477dd4a73.mockapi.io/api/jobs/jobs")
-            .then((response) => {
-                setTotalPages(Math.ceil(response.data.length / itemsPerPage));
-                setJobs(response.data);
-            })
-            .catch((error) => {
-            });
+        // axios.get("https://67ad4bd83f5a4e1477dd4a73.mockapi.io/api/jobs/jobs")
+        //     .then((response) => {
+        //         setTotalPages(Math.ceil(response.data.length / itemsPerPage));
+        //         setJobs(response.data);
+        //     })
+        //     .catch((error) => {
+        //     });
 
         // Gọi API danh sách công ty
         axios.get("https://67ad4bd83f5a4e1477dd4a73.mockapi.io/api/jobs/companies")
@@ -208,7 +197,7 @@ function JobListBar() {
     }, [selectedJob]); 
 
     // Lọc danh sách jobs theo trang hiện tại
-    const displayedJobs = jobs.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+    const displayedJobs = (jobs || []).slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
     // Hàm tính thời gian đăng (X giờ/ngày trước)
     const timeAgo = (dateString) => {
@@ -249,7 +238,10 @@ function JobListBar() {
                                 <div 
                                     key={job.id} 
                                     className={`card job-card ${selectedJobId === job.id ? "selected-job" : ""}`} 
-                                    onClick={() => setSelectedJobId(job.id)} 
+                                    onClick={() => {
+                                        setSelectedJob(job);
+                                        setSelectedJobId(job.id);
+                                      }} 
                                     style={{ cursor: "pointer" }}>
                                     <div 
                                         className= "card-body position-relative p-3"

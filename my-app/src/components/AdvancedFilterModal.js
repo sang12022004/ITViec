@@ -17,7 +17,7 @@ function AdvancedFilterModal({
   setAppliedSalary,
 }) {
   const levels = ["Fresher", "Junior", "Senior", "Manager"];
-  const workTypes = ["Tại văn phòng", "Làm từ xa", "Linh hoạt"];
+  const workTypes = ["at_office", "remote", "hybrid"];
   const companyTypes = ["Thuê ngoài", "Sản phẩm", "Headhunt", "Dịch vụ & Tư vấn giải pháp", "Non-IT"];
   const fieldCategories = {
     "Công Nghệ": ["Phần Cứng và Điện Toán", "Trò Chơi", "Truyền Thông, Quảng Cáo và Giải Trí"],
@@ -39,7 +39,6 @@ function AdvancedFilterModal({
     setSalaryRange((prev) =>
       name === "min" ? [Math.min(value, prev[1] - 500), prev[1]] : [prev[0], Math.max(value, prev[0] + 500)]
     );
-    setAppliedSalary(true);
   };
 
   if (!isOpen) return null;
