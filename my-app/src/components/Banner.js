@@ -14,23 +14,29 @@ function Banner() {
     axios.get(COMPANIES_API)
       .then((response) => {
         const spotlightCompanies = response.data.filter(company => company.is_spotlight);
+  
         if (spotlightCompanies.length > 0) {
-          setSpotlightCompany(spotlightCompanies[0]);
+          const randomIndex = Math.floor(Math.random() * spotlightCompanies.length);
+          setSpotlightCompany(spotlightCompanies[randomIndex]);
         }
       })
       .catch(error => console.error("Lỗi khi lấy danh sách công ty:", error));
-  }, []);
+  }, []);  
 
   useEffect(() => {
-    if (spotlightCompany) {
-      axios.get(JOBS_API)
-        .then((response) => {
-          const jobs = response.data.filter(job => job.company_id === spotlightCompany.id);
-          setJobCount(jobs.length);
-        })
-        .catch(error => console.error("Lỗi khi lấy danh sách công việc:", error));
-    }
-  }, [spotlightCompany]);
+    if (!spotlightCompany) return;  // Nếu chưa có spotlightCompany thì không gọi API
+  
+    axios.get(JOBS_API)
+      .then((response) => {
+        const jobs = response.data.filter(job => String(job.company_id) === String(spotlightCompany.id));
+  
+        setJobCount(jobs.length);
+      })
+      .catch(error => {
+        setJobCount(0);
+      });
+  
+  }, [spotlightCompany]);  
 
   if (!spotlightCompany) return null;
 
@@ -77,38 +83,6 @@ function Banner() {
               </div>
           </div>
       </div>
-      {/* <div className="highlighted-employer">
-          <div className="row">
-              <div className="col-md-4 company-image-container">
-                  <div className="company-banner-wrapper">
-                      <img src={spotlightCompany.banner_url} alt={spotlightCompany.name} className="company-banner" />
-                  </div>
-                  <div className="company-logo">
-                      <img src={spotlightCompany.logo_url} alt={spotlightCompany.name} />
-                  </div>
-                  <span className="highlighted-label">Nhà Tuyển Dụng Nổi Bật</span>
-              </div>
-
-              <div className="col-md-4 company-info">
-                  <h4 className="company-name">{spotlightCompany.name}</h4>
-                  <p className="company-location">
-                      <FaMapMarkerAlt /> {spotlightCompany.location}
-                  </p>
-                  <p className="highlighted-description">{spotlightCompany.slogan}</p>
-                  <a href="/" className="highlighted-link">Xem {jobCount} việc làm</a>
-              </div>
-
-              <div className="col-md-4 job-list-container">
-                  <ul className="job-list">
-                      {spotlightCompany.highlight_text.map((textObj, index) => (
-                          <li key={index}>
-                              <FaArrowCircleRight className="job-icon" /> {textObj.text}
-                          </li>
-                      ))}
-                  </ul>
-              </div>
-          </div>
-      </div> */}
     </div>
   );
 }

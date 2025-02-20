@@ -130,7 +130,7 @@ function App() {
       <div className="wrapper">
         <Banner />
       </div>
-      <Title />
+      <Title jobCount={filteredJobs.length} />
       {/* Bộ lọc */}
       <FilterBar
         selectedLevels={selectedLevels} setSelectedLevels={setSelectedLevels}
