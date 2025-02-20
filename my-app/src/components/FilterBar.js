@@ -8,7 +8,8 @@ function FilterBar({
   salaryRange, setSalaryRange,
   appliedSalary, setAppliedSalary,
   selectedFields, setSelectedFields,
-  selectedCompanyTypes, setSelectedCompanyTypes
+  selectedCompanyTypes, setSelectedCompanyTypes,
+  selectedIndustries, setSelectedIndustries,
 }) {
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
   const [isLevelOpen, setIsLevelOpen] = useState(false);
@@ -62,11 +63,88 @@ function FilterBar({
   };
 
   const fieldCategories = {
-    "Công Nghệ": ["Phần Cứng và Điện Toán", "Trò Chơi", "Truyền Thông, Quảng Cáo và Giải Trí"],
-    "Tài Chính": ["Ngân Hàng", "Dịch Vụ Tài Chính", "Bảo Hiểm"],
-    "Sức Khỏe": ["Dược Phẩm", "Chăm Sóc Sức Khỏe", "Y Tế"],
-    "Sản Xuất & Kinh Doanh": ["Bất Động Sản và Xây Dựng", "Vật Liệu và Khai Thác", "Công Nghiệp Tiện Ích"],
-  };
+    "Công Nghệ Thông Tin": [
+      "Phần mềm",
+      "Dịch Vụ và Tư Vấn IT",
+      "Phần Cứng và Điện Toán",
+      "An Ninh Mạng",
+      "Mạng Lưới và Cơ Sở Hạ Tầng",
+      "Thuê Ngoài Phát Triển Phần Mềm",
+      "Sản Phẩm Phần Mềm và Dịch Vụ Web",
+      "AI, Blockchain và Dịch Vụ Deep Tech"
+    ],
+    "Tài Chính & Ngân Hàng": [
+      "Ngân Hàng",
+      "Dịch Vụ Tài Chính",
+      "Bảo Hiểm",
+      "Chứng Khoán",
+      "Dịch Vụ Nghiên Cứu"
+    ],
+    "Sức Khỏe & Dược Phẩm": [
+      "Chăm Sóc Sức Khỏe",
+      "Dược Phẩm",
+      "Y Tế",
+      "Sức Khỏe & Thể Dục"
+    ],
+    "Sản Xuất & Công Nghiệp": [
+      "Sản Xuất và Kỹ Thuật",
+      "Công Nghiệp Tiện Ích",
+      "Vật Liệu và Khai Thác"
+    ],
+    "Bất Động Sản & Xây Dựng": [
+      "Bất Động Sản",
+      "Xây Dựng",
+      "Quản Lý Cơ Sở Vật Chất"
+    ],
+    "Thương Mại & Dịch Vụ": [
+      "Thương Mại Điện Tử",
+      "Mua Bán và Thương Mại",
+      "Bán Lẻ và Bán Buôn",
+      "Dịch Vụ Chuyên Nghiệp",
+      "Dịch Vụ Khách Hàng"
+    ],
+    "Vận Tải & Logistics": [
+      "Vận Tải, Logistics và Kho Hàng",
+      "Giao Nhận & Chuỗi Cung Ứng"
+    ],
+    "Truyền Thông & Quảng Cáo": [
+      "Truyền Thông",
+      "Quảng Cáo và Giải Trí",
+      "Xuất Bản và In Ấn"
+    ],
+    "Giáo Dục & Đào Tạo": [
+      "Giáo Dục và Đào Tạo",
+      "Dịch Vụ Nghiên Cứu"
+    ],
+    "Du Lịch & Dịch Vụ Lưu Trú": [
+      "Du Lịch & Dịch Vụ Lưu Trú",
+      "Nhà Hàng & Ẩm Thực"
+    ],
+    "Chính Phủ & Phi Lợi Nhuận": [
+      "Chính Phủ",
+      "Phi Lợi Nhuận và Dịch Vụ Xã Hội"
+    ],
+    "Hàng Tiêu Dùng & Thực Phẩm": [
+      "Hàng Tiêu Dùng",
+      "Thực Phẩm & Đồ Uống"
+    ],
+    "Thời Trang & Mỹ Phẩm": [
+      "May mặc và Thời Trang",
+      "Làm Đẹp & Mỹ Phẩm"
+    ],
+    "Giải Trí & Thể Thao": [
+      "Trò Chơi",
+      "Thể thao và Thể hình",
+      "Sáng Tạo và Thiết Kế"
+    ],
+    "Môi Trường & Nông Nghiệp": [
+      "Môi Trường",
+      "Nông Nghiệp"
+    ],
+    "Nhân Sự & Tuyển Dụng": [
+      "Cung Ứng và Tuyển Dụng"
+    ]
+  };  
 
   // Đóng dropdown khi click ra ngoài
   useEffect(() => {
@@ -118,6 +196,7 @@ function FilterBar({
     setSelectedFields([]);
     setSelectedCompanyTypes([]);
     setAppliedSalary(null);
+    setSelectedIndustries([]);
     setSalaryRange([500, 10000]); // Reset lại mức lương
   };
 
@@ -127,7 +206,8 @@ function FilterBar({
     selectedWorkTypes.length > 0 ||
     appliedSalary !== null ||
     selectedFields.length > 0 ||
-    selectedCompanyTypes.length > 0;
+    selectedCompanyTypes.length > 0||
+    selectedIndustries.length > 0;
 
   return (
     <div className="filter-bar">
@@ -253,6 +333,9 @@ function FilterBar({
             className={`btn filter-btn ${selectedFields.length > 0 ? "selected" : ""}`}
             onClick={(e) => {
               e.stopPropagation();
+              setIsSalaryOpen(false);
+              setIsWorkTypeOpen(false);
+              setIsLevelOpen(false);
               setIsFieldOpen(!isFieldOpen);
             }}
           >
@@ -265,7 +348,7 @@ function FilterBar({
           </button>
 
           {isFieldOpen && (
-            <div className="dropdown-menu-in-filter field-dropdown">
+            <div className="dropdown-menu-in-filter">
               {/* Ô tìm kiếm */}
               <input
                 type="text"

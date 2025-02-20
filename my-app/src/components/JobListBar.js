@@ -10,12 +10,9 @@ function JobListBar({ jobs, currentPage, setCurrentPage, totalPages }) {
     const jobListContainerRef = useRef(null);   
     const [selectedJobId, setSelectedJobId] = useState(null);
    
-
     // Số trang & phân trang
-    
     const itemsPerPage = 4;
     
-
     useEffect(() => {
         if (!selectedJob) return;
     
@@ -25,15 +22,6 @@ function JobListBar({ jobs, currentPage, setCurrentPage, totalPages }) {
       }, [selectedJob]);
 
     useEffect(() => {
-        // Gọi API danh sách công việc
-        // axios.get("https://67ad4bd83f5a4e1477dd4a73.mockapi.io/api/jobs/jobs")
-        //     .then((response) => {
-        //         setTotalPages(Math.ceil(response.data.length / itemsPerPage));
-        //         setJobs(response.data);
-        //     })
-        //     .catch((error) => {
-        //     });
-
         // Gọi API danh sách công ty
         axios.get("https://67ad4bd83f5a4e1477dd4a73.mockapi.io/api/jobs/companies")
             .then((response) => {
@@ -276,7 +264,10 @@ function JobListBar({ jobs, currentPage, setCurrentPage, totalPages }) {
                                         <hr className="dot-hr" />
 
                                         <p className="job-location">
-                                            <i className="fa-solid fa-building"></i> {job.work_type.includes("at_office") ? "Tại văn phòng" : "Remote"} <br />
+                                            <i className="fa-solid fa-building"></i> 
+                                                {job.work_type.includes("at_office") ? " Tại văn phòng" :
+                                                job.work_type.includes("hybrid") ? " Linh hoạt" : " Từ xa"}
+                                            <br />
                                             <i className="fa-solid fa-location-dot"></i> {job.location}
                                         </p>
 
@@ -342,7 +333,10 @@ function JobListBar({ jobs, currentPage, setCurrentPage, totalPages }) {
                                 <i className="fa-solid fa-up-right-from-square"></i>
                             </a>
                             <br/>  
-                            <i className="fa-solid fa-building"></i> {selectedJob.work_type.includes("at_office") ? "Tại văn phòng" : "Remote"} <br/>   
+                            <i className="fa-solid fa-building"></i> 
+                                                {selectedJob.work_type.includes("at_office") ? " Tại văn phòng" :
+                                                selectedJob.work_type.includes("hybrid") ? " Linh hoạt" : " Từ xa"}
+                                            <br />
                             <i className="fas fa-clock"></i> {new Date(selectedJob.posted_time).toLocaleDateString()}
                         </p>
 
