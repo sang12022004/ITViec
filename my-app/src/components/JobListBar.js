@@ -184,8 +184,10 @@ function JobListBar({ jobs, currentPage, setCurrentPage, totalPages }) {
         };
     }, [selectedJob]); 
 
-    // Lọc danh sách jobs theo trang hiện tại
-    const displayedJobs = (jobs || []).slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+    const displayedJobs = (jobs || [])
+        .sort((a, b) => new Date(b.posted_time) - new Date(a.posted_time))
+        .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
 
     // Hàm tính thời gian đăng (X giờ/ngày trước)
     const timeAgo = (dateString) => {
