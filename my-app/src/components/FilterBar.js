@@ -8,8 +8,7 @@ function FilterBar({
   salaryRange, setSalaryRange,
   appliedSalary, setAppliedSalary,
   selectedFields, setSelectedFields,
-  selectedCompanyTypes, setSelectedCompanyTypes,
-  selectedIndustries, setSelectedIndustries,
+  selectedCompanyTypes, setSelectedCompanyTypes
 }) {
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
   const [isLevelOpen, setIsLevelOpen] = useState(false);
@@ -196,7 +195,6 @@ function FilterBar({
     setSelectedFields([]);
     setSelectedCompanyTypes([]);
     setAppliedSalary(null);
-    setSelectedIndustries([]);
     setSalaryRange([500, 10000]); // Reset lại mức lương
   };
 
@@ -206,8 +204,7 @@ function FilterBar({
     selectedWorkTypes.length > 0 ||
     appliedSalary !== null ||
     selectedFields.length > 0 ||
-    selectedCompanyTypes.length > 0||
-    selectedIndustries.length > 0;
+    selectedCompanyTypes.length > 0;
 
   return (
     <div className="filter-bar">
