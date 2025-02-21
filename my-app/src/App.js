@@ -15,7 +15,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  // ⚡ Trạng thái bộ lọc
+  // Trạng thái bộ lọc
   const [selectedLevels, setSelectedLevels] = useState([]);
   const [selectedWorkTypes, setSelectedWorkTypes] = useState([]);
   const [salaryRange, setSalaryRange] = useState([500, 10000]);
@@ -23,6 +23,8 @@ function App() {
   const [selectedFields, setSelectedFields] = useState([]);
   const [selectedCompanyTypes, setSelectedCompanyTypes] = useState([]);
   const [selectedIndustries] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCity, setSelectedCity] = useState("Tất cả thành phố");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -115,18 +117,84 @@ function App() {
       });
     
     }
-           
+
+  
+      // Lọc theo từ khóa tìm kiếm (theo tiêu đề công việc hoặc mô tả)
+      if (searchTerm.trim() !== "") {
+        const lowerSearchTerm = searchTerm.toLowerCase();
+        jobs = jobs.filter(job => {
+            const jobTitle = job.title ? job.title.toLowerCase() : "";
+            const jobDescription = job.description ? job.description.toLowerCase() : "";
+            const company = companies.find(company => String(company.id) === String(job.company_id));
+            const companyName = company && company.name ? company.name.toLowerCase() : "";
+            const jobSkills = job.skills && Array.isArray(job.skills)
+                ? job.skills.map(skill => skill.toLowerCase()).join(" ")
+                : "";
+
+            return (
+                jobTitle.includes(lowerSearchTerm) || 
+                jobDescription.includes(lowerSearchTerm) || 
+                companyName.includes(lowerSearchTerm) || 
+                jobSkills.includes(lowerSearchTerm)
+            );
+          });
+      }
+
+      const removeDiacritics = (str) => {
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    };
+    
+    // Lọc theo thành phố
+    if (selectedCity !== "Tất cả thành phố") {
+        if (selectedCity === "Others") {
+            // Chỉ hiển thị các công việc KHÔNG thuộc Hồ Chí Minh, Hà Nội, Đà Nẵng
+            jobs = jobs.filter(job => 
+                job.location &&
+                !["Hồ Chí Minh", "Hà Nội", "Đà Nẵng"].some(city => 
+                    removeDiacritics(job.location).includes(removeDiacritics(city))
+                )
+            );
+        } else {
+            // Hiển thị công việc thuộc thành phố được chọn (giữ nguyên dấu)
+            jobs = jobs.filter(job => 
+                job.location && job.location.includes(selectedCity)
+            );
+        }
+  
+      // Lọc theo thành phố
+      if (selectedCity !== "Tất cả thành phố") {
+          if (selectedCity === "Others") {
+              // Chỉ hiển thị các công việc KHÔNG thuộc Hồ Chí Minh, Hà Nội, Đà Nẵng
+              jobs = jobs.filter(job => 
+                  job.location &&
+                  !["Hồ Chí Minh", "Hà Nội", "Đà Nẵng"].some(city => 
+                      removeDiacritics(job.location).includes(removeDiacritics(city))
+                  )
+              );
+          } else {
+              // Hiển thị công việc thuộc thành phố được chọn (giữ nguyên dấu)
+              jobs = jobs.filter(job => 
+                  job.location && job.location.includes(selectedCity)
+              );
+          }
+      }
+    }
 
     // Cập nhật danh sách công việc đã lọc
     setFilteredJobs(jobs);
     setTotalPages(Math.ceil(jobs.length / 4));
-  }, [allJobs, selectedLevels, selectedWorkTypes, appliedSalary, selectedCompanyTypes, selectedIndustries, companies, selectedFields]);
+  }, [allJobs, companies, searchTerm, selectedCity, selectedLevels, selectedWorkTypes, appliedSalary, selectedCompanyTypes, selectedIndustries, selectedFields]);
 
   return (
     <div className="main">
       <div className="background"></div>
       <Navbar />
-      <SearchBar />
+      <SearchBar 
+        searchTerm={searchTerm} setSearchTerm={setSearchTerm} 
+        selectedCity={selectedCity} setSelectedCity={setSelectedCity} 
+        allJobs={allJobs} allCompanies={companies} 
+      />
+
       <div className="wrapper">
         <Banner />
       </div>
