@@ -2,9 +2,10 @@ import React, { useState, useRef} from "react";
 import logo from "../assets/images/logo.png";
 import "../assets/css/navbar.css";
 
-function Navbar() {
+function Navbar({ onFilterJobs }) {
     const [activeMenu, setActiveMenu] = useState(null);
     const [activeSubmenu, setActiveSubmenu] = useState(null);
+    const [selectedFilter, setSelectedFilter] = useState(null);
 
     const menuRef = useRef(null);
 
@@ -26,6 +27,7 @@ function Navbar() {
             submenu: [
                 {
                     title: "Việc làm IT theo kỹ năng",
+                    type: "api",
                     submenu: [
                         "Java", "Python", "JavaScript", "C#", "C++", "PHP", "Ruby", "Golang",
                         "Swift", "Kotlin", "TypeScript", "SQL", "MongoDB", "NoSQL", "DevOps",
@@ -37,6 +39,7 @@ function Navbar() {
                 },
                 {
                     title: "Việc làm IT theo cấp bậc",
+                    type: "api",
                     submenu: [
                         "Lập trình viên Java", "Lập trình viên PHP", "Lập trình viên JavaScript",
                         "Lập trình viên HTML5", "Lập trình viên SQL", "Lập trình viên Android",
@@ -50,6 +53,7 @@ function Navbar() {
                 },
                 {
                     title: "Việc làm IT theo công ty",
+                    type: "link",
                     submenu: [
                         "TymeX", "NEC Vietnam", "FPT Software", "NAB Innovation Centre",
                         "Capgemini Vietnam", "PVcomBank", "Vietnam", "Techcombank", "FWD VTC",
@@ -63,6 +67,7 @@ function Navbar() {
                 },
                 {
                     title: "Việc làm IT theo thành phố",
+                    type: "api",
                     submenu: ["Hồ Chí Minh", "Hà Nội", "Đà Nẵng", "Khác"]
                 }
             ]
@@ -72,6 +77,7 @@ function Navbar() {
             submenu: [
                 {
                     title: "Công ty IT Tốt Nhất",
+                    type: "link",
                     submenu: [
                         "Công ty IT Tốt Nhất 2024", "Công ty IT Tốt Nhất 2023",
                         "Công ty IT Tốt Nhất 2022", "Công ty IT Tốt Nhất 2021",
@@ -88,6 +94,7 @@ function Navbar() {
             submenu: [
                 {
                     title: "Báo Cáo Lương IT",
+                    type: "link",
                     submenu: [
                         "Báo Cáo Lương IT 2024-2025", "Báo Cáo Lương IT 2023-2024",
                         "Báo Cáo Lương IT 2022-2023"
@@ -105,6 +112,73 @@ function Navbar() {
             ]
         }
     ];
+
+    const handleMenuClick = (event, item) => {
+        if (event) {
+            event.stopPropagation();
+            event.preventDefault();
+        }
+    
+        if (!item) {
+            console.error("🚨 Lỗi: Item không hợp lệ.");
+            return;
+        }
+    
+        // Nếu item là chuỗi, sử dụng trực tiếp, nếu là object, lấy item.title
+        const itemTitle = typeof item === "string" ? item : item.title;
+    
+        // 🔍 Tìm danh mục cha chứa item này
+        let parentCategory = null;
+        menuData.forEach(menu => {
+            menu.submenu.forEach(sub => {
+                if (sub.submenu && sub.submenu.includes(itemTitle)) {
+                    parentCategory = sub; // Lưu danh mục cha
+                }
+            });
+        });
+    
+        if (!parentCategory) {
+            console.warn("⚠️ Không tìm thấy danh mục cha cho:", itemTitle);
+            return;
+        }
+    
+        const parentTitle = parentCategory.title; // Tên danh mục cha
+        const parentType = parentCategory.type || "unknown"; // Loại API hoặc Link
+    
+        console.log(`🔍 Item: ${itemTitle} thuộc danh mục: ${parentTitle} (Loại: ${parentType})`);
+    
+        // Kiểm tra nếu đã chọn cùng một filter thì không cần cập nhật lại
+        if (selectedFilter === itemTitle) {
+            console.warn("⚠️ Bộ lọc đã được chọn trước đó:", itemTitle);
+            return;
+        }
+    
+        // Cập nhật state
+        setSelectedFilter(itemTitle);
+    
+        // Xử lý theo loại
+        switch (parentType) {
+            case "api":
+                console.log(`📡 Gọi API lọc theo: ${itemTitle} (Danh mục: ${parentTitle})`);
+                if (typeof onFilterJobs === "function") {
+                    onFilterJobs(itemTitle);
+                } else {
+                    console.error("🚨 `onFilterJobs` không được truyền vào Navbar hoặc không phải là hàm hợp lệ.");
+                }
+                break;
+    
+            case "link":
+                const formattedUrl = `/${itemTitle.toLowerCase().replace(/ /g, "-")}`;
+                console.log(`🔗 Chuyển hướng đến: ${formattedUrl}`);
+                window.location.href = formattedUrl;
+                break;
+    
+            default:
+                console.warn("⚠️ Không xác định được hành động cho item:", itemTitle);
+                break;
+        }
+    };
+    
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark custom-navbar">
@@ -140,19 +214,25 @@ function Navbar() {
                                 </a>
                                 {/* Submenu */}
                                 {activeMenu === index && menu.submenu.length > 0 && (
-                                    <ul className={`dropdown-menu ${activeSubmenu !== null ? "active" : ""}`}>
+                                    <ul className={`dropdown-menu ${activeSubmenu !== null ? "active" : ""}`}
+                                        onMouseEnter={() => setActiveMenu(index)}
+                                        onMouseLeave={() => {
+                                            setActiveMenu(null);
+                                            setActiveSubmenu(null); // Ẩn submenu khi di chuột ra ngoài
+                                        }}
+                                    >
                                         {/* Cột bên trái */}
                                         <div className="dropdown-left">
                                             {menu.submenu.map((sub, subIndex) => (
                                                 <li 
                                                     key={subIndex} 
                                                     className={`dropdown-item ${activeSubmenu === subIndex ? "active" : ""}`}
-                                                    onMouseEnter={() => setActiveSubmenu(subIndex)}
+                                                    onMouseEnter={() => setActiveSubmenu(subIndex)} // Chỉ dùng để hiển thị submenu
                                                 >
                                                     {sub.title}
                                                     {sub.submenu && Array.isArray(sub.submenu) && sub.submenu.length > 0 && (
                                                         <span className="submenu-icon">
-                                                            <i className="fas fa-chevron-right"></i> {/* FontAwesome */}
+                                                            <i className="fas fa-chevron-right"></i>
                                                         </span>
                                                     )}
                                                 </li>
@@ -168,7 +248,12 @@ function Navbar() {
                                                     data-columns={getColumnCount(menu.submenu[activeSubmenu].submenu)}
                                                 >
                                                     {menu.submenu[activeSubmenu].submenu.map((item, itemIndex) => (
-                                                        <li key={itemIndex}>{item}</li>
+                                                        <li 
+                                                            key={itemIndex}
+                                                            onClick={(event) => handleMenuClick(event, item)}
+                                                        >
+                                                            {item}
+                                                        </li>
                                                     ))}
                                                     <li className="view-all">
                                                         <a href="/" className="view-all-link">Xem tất cả &rsaquo;</a>

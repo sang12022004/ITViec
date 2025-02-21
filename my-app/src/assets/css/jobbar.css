@@ -602,3 +602,9 @@
     color: gray;
     cursor: not-allowed;
 }
+
+.Non-find {
+    position: relative;
+    top: 110%;
+    left: 110%;
+}

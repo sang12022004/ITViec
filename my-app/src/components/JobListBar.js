@@ -217,7 +217,7 @@ function JobListBar({ jobs, currentPage, setCurrentPage, totalPages }) {
             <div className="col-md-5 job-list-container" ref={jobListContainerRef}>
                 <div className="job-list">
                     {displayedJobs.length === 0 ? (
-                        <p>Đang tải danh sách công việc...</p>
+                        <p className="Non-find">Không tìm thấy...</p>
                     ) : (
                         displayedJobs.map((job) => {
                             const company = companies[job.company_id] || {};

@@ -366,3 +366,10 @@
 .navbar .dropdown:focus-within > .nav-link {
     color: white !important;
 }
+
+.dropdown-right {
+    pointer-events: auto;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+}

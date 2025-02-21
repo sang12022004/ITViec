@@ -25,6 +25,9 @@ function App() {
   const [selectedIndustries] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCity, setSelectedCity] = useState("Tất cả thành phố");
+  const [filterType, setFilterType] = useState("all"); // Lưu loại bộ lọc ("skills", "level", "location", "search")
+  const [filterValue, setFilterValue] = useState(""); // Lưu giá trị bộ lọc ("Java", "Hồ Chí Minh", "a")
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,12 +42,60 @@ function App() {
         setFilteredJobs(jobResponse.data || []);
         setCompanies(companyResponse.data || []);
       } catch (error) {
-        console.error("❌ Lỗi tải danh sách công việc hoặc công ty:", error);
+        console.error("Lỗi tải danh sách công việc hoặc công ty:", error);
       }
     };
 
     fetchData();
   }, []);
+
+  const removeDiacritics = (str) => {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+};
+
+const handleFilterJobs = async (category) => {
+    try {
+        // Gọi API lấy tất cả công việc
+        const response = await axios.get("https://67ad4bd83f5a4e1477dd4a73.mockapi.io/api/jobs/jobs");
+        const allJobs = response.data || [];
+
+        // Chuẩn hóa category để so sánh không phân biệt dấu
+        const normalizedCategory = removeDiacritics(category);
+
+        let matchedFilterType = "skills";
+
+        // Lọc danh sách công việc dựa trên skills, level, location (mềm)
+        const filtered = allJobs.filter(job => {
+          if (job.skills && job.skills.includes(category)) {
+              matchedFilterType = "skills"; // Xác nhận là lọc theo kỹ năng
+              return true;
+          }
+          if (job.level && (
+              (Array.isArray(job.level) && job.level.includes(category)) ||  
+              (typeof job.level === "string" && job.level.includes(category))
+          )) {
+              matchedFilterType = "level"; // Xác nhận là lọc theo cấp bậc
+              return true;
+          }
+          if (job.location && removeDiacritics(job.location).includes(normalizedCategory)) {
+              matchedFilterType = "location"; // Xác nhận là lọc theo địa điểm
+              return true;
+          }
+          return false;
+      });
+
+        setFilterType(matchedFilterType);
+        setFilterValue(category);
+        setAllJobs(filtered);
+    } catch (error) {
+      setFilteredJobs([]);
+      setFilterType("all"); // Reset nếu có lỗi
+      setAllJobs([]); // Nếu lỗi, đặt danh sách công việc về rỗng
+    }
+  };
+
+
+
 
   useEffect(() => {
     if (allJobs.length === 0 || companies.length === 0) {
@@ -120,28 +171,28 @@ function App() {
 
   
       // Lọc theo từ khóa tìm kiếm (theo tiêu đề công việc hoặc mô tả)
-      if (searchTerm.trim() !== "") {
-        const lowerSearchTerm = searchTerm.toLowerCase();
-        jobs = jobs.filter(job => {
-            const jobTitle = job.title ? job.title.toLowerCase() : "";
-            const jobDescription = job.description ? job.description.toLowerCase() : "";
-            const company = companies.find(company => String(company.id) === String(job.company_id));
-            const companyName = company && company.name ? company.name.toLowerCase() : "";
-            const jobSkills = job.skills && Array.isArray(job.skills)
-                ? job.skills.map(skill => skill.toLowerCase()).join(" ")
-                : "";
+    if (searchTerm.trim() !== "") {
+      const lowerSearchTerm = searchTerm.toLowerCase();
+      jobs = jobs.filter(job => {
+          const jobTitle = job.title ? job.title.toLowerCase() : "";
+          const jobDescription = job.description ? job.description.toLowerCase() : "";
+          const company = companies.find(company => String(company.id) === String(job.company_id));
+          const companyName = company && company.name ? company.name.toLowerCase() : "";
+          const jobSkills = job.skills && Array.isArray(job.skills)
+              ? job.skills.map(skill => skill.toLowerCase()).join(" ")
+              : "";
 
-            return (
-                jobTitle.includes(lowerSearchTerm) || 
-                jobDescription.includes(lowerSearchTerm) || 
-                companyName.includes(lowerSearchTerm) || 
-                jobSkills.includes(lowerSearchTerm)
-            );
-          });
-      }
+          return (
+              jobTitle.includes(lowerSearchTerm) || 
+              jobDescription.includes(lowerSearchTerm) || 
+              companyName.includes(lowerSearchTerm) || 
+              jobSkills.includes(lowerSearchTerm)
+          );
+        });
+    }
 
-      const removeDiacritics = (str) => {
-        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    const removeDiacritics = (str) => {
+      return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
     };
     
     // Lọc theo thành phố
@@ -178,6 +229,8 @@ function App() {
               );
           }
       }
+      setFilterType("search");
+      setFilterValue(searchTerm);
     }
 
     // Cập nhật danh sách công việc đã lọc
@@ -188,7 +241,7 @@ function App() {
   return (
     <div className="main">
       <div className="background"></div>
-      <Navbar />
+      <Navbar onFilterJobs={handleFilterJobs} />
       <SearchBar 
         searchTerm={searchTerm} setSearchTerm={setSearchTerm} 
         selectedCity={selectedCity} setSelectedCity={setSelectedCity} 
@@ -198,7 +251,7 @@ function App() {
       <div className="wrapper">
         <Banner />
       </div>
-      <Title jobCount={filteredJobs.length} />
+      <Title jobCount={filteredJobs.length} filterType={filterType} filterValue={filterValue} />
       {/* Bộ lọc */}
       <FilterBar
         selectedLevels={selectedLevels} setSelectedLevels={setSelectedLevels}
