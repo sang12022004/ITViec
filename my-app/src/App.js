@@ -67,18 +67,18 @@ const handleFilterJobs = async (category) => {
         // Lọc danh sách công việc dựa trên skills, level, location (mềm)
         const filtered = allJobs.filter(job => {
           if (job.skills && job.skills.includes(category)) {
-              matchedFilterType = "skills"; // Xác nhận là lọc theo kỹ năng
+              matchedFilterType = "skills";
               return true;
           }
           if (job.level && (
               (Array.isArray(job.level) && job.level.includes(category)) ||  
               (typeof job.level === "string" && job.level.includes(category))
           )) {
-              matchedFilterType = "level"; // Xác nhận là lọc theo cấp bậc
+              matchedFilterType = "level";
               return true;
           }
           if (job.location && removeDiacritics(job.location).includes(normalizedCategory)) {
-              matchedFilterType = "location"; // Xác nhận là lọc theo địa điểm
+              matchedFilterType = "location";
               return true;
           }
           return false;
@@ -89,8 +89,8 @@ const handleFilterJobs = async (category) => {
         setAllJobs(filtered);
     } catch (error) {
       setFilteredJobs([]);
-      setFilterType("all"); // Reset nếu có lỗi
-      setAllJobs([]); // Nếu lỗi, đặt danh sách công việc về rỗng
+      setFilterType("all");
+      setAllJobs([]);
     }
   };
 

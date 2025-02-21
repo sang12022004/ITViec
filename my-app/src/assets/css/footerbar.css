@@ -1,7 +1,7 @@
 /* ===== Footer CSS ===== */
 
 .footer {
-    background: linear-gradient(to right, black, #3b0000); /* Chỉnh màu nền cho gần giống */
+    background: linear-gradient(to right, black, #3b0000);
     color: white;
     padding: 40px 0;
     justify-content: center;

@@ -3,11 +3,11 @@
 .search-container {
     display: flex;
     flex-direction: row;
-    align-items: center; /* Căn giữa theo chiều dọc */
-    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; 
+    justify-content: center;
     gap: 12px;
-    width: 100vw; /* Chiếm toàn bộ chiều rộng */
-    height: 100px; /* Đặt chiều cao phù hợp */
+    width: 100vw;
+    height: 100px;
     background: linear-gradient(to right, black, #3b0000);
     padding: 20px;
 }
@@ -21,7 +21,7 @@
     width: 250px;
     padding: 16px 20px;
     background-color: white;
-    border: 1px solid #ccc; /* Viền xám */
+    border: 1px solid #ccc;
     border-radius: 3px;
     cursor: pointer;
     font-size: 18px;
@@ -34,13 +34,13 @@
 
 /* Điều chỉnh vị trí dropdown */
 .relative {
-    position: relative; /* Đảm bảo phần tử cha có position relative */
+    position: relative;
 }
 /* Dropdown menu */
 .dropdown-menu-in-search {
     background: white !important;
-    display: flex; /* Chia menu thành 2 phần: trái và phải */
-    width: 100%; /* Độ rộng của toàn bộ submenu */
+    display: flex;
+    width: 100%;
     border-radius: 3px;
     box-shadow: none;
     position: absolute;

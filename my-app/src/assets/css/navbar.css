@@ -123,11 +123,11 @@
     grid-auto-rows: minmax(30px, auto);
     gap: 15px 25px;
     padding-left: 10px;
-    max-height: 450px; /* Giới hạn chiều cao */
-    min-width: 320px; /* Đảm bảo không quá nhỏ */
-    max-width: 950px; /* Giới hạn tối đa */
-    align-items: start; /* Căn các item từ trên xuống */
-    position: relative; /* Để "Xem tất cả" cố định dưới cùng */
+    max-height: 450px;
+    min-width: 320px;
+    max-width: 950px; 
+    align-items: start;
+    position: relative;
     padding-bottom: 40px;
 }
 
@@ -143,7 +143,6 @@
 .dropdown-right li {
     list-style: none;
     font-size: 16px;
-    /* color: rgba(255, 255, 255, 0.5); */
     padding: 5px 0;
     white-space: nowrap;
 }
@@ -154,7 +153,7 @@
     padding: 5px 0;
     font-size: 15px;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.8); /* Màu sáng hơn */
+    color: rgba(255, 255, 255, 0.8);
 }
 
 /* Mục trong dropdown */
@@ -211,9 +210,9 @@
 
 /* === Xem tất cả ở góc dưới bên phải === */
 .view-all {
-    grid-column: span 4; /* Kéo dài trên 2 cột */
+    grid-column: span 4; /* Kéo dài trên 4 cột */
     display: flex;
-    justify-content: center; /* Căn giữa nội dung */
+    justify-content: center;
     align-items: center;
     width: 100%;
     padding-top: 10px;
@@ -250,10 +249,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%; /* Chiều cao bằng navbar */
-    width: 100%; /* Nếu cần chiếm toàn bộ chiều rộng của dropdown */
-    min-height: 70px; /* Đảm bảo không bị thu nhỏ */
-    padding: 0 20px; /* Khoảng cách hai bên */
+    height: 100%; 
+    width: 100%;
+    min-height: 70px;
+    padding: 0 20px; 
 }
 
 /* Chia cột dựa trên data-columns */
@@ -310,8 +309,8 @@
 .nav-link,
 .dropdown-menu .dropdown-item,
 .dropdown-right li {
-    color: #888; /* Màu chữ xám nhạt */
-    background: transparent; /* Không có nền */
+    color: #888;
+    background: transparent;
     transition: color 0.3s ease-in-out, background 0.3s ease-in-out;
 }
 
@@ -319,28 +318,28 @@
 .nav-link.active,
 .dropdown-menu .dropdown-item.active,
 .dropdown-right li.active {
-    color: white !important; /* Chữ trắng */
-    background: #444; /* Nền xám đậm */
+    color: white !important;
+    background: #444;
 }
 
 /* Hover trên menu chính & submenu */
 .nav-link:hover,
 .dropdown-menu .dropdown-item:hover {
-    color: white; /* Chữ trắng */
-    background: #555; /* Nền xám trung bình */
+    color: white; 
+    background: #555; 
 }
 
 /* Khi hover vào .dropdown-right */
 .dropdown-right li:hover {
-    color: white !important; /* Chữ trắng */
-    background: #666 !important; /* Nền xám sáng */
+    color: white !important;
+    background: #666 !important; 
 }
 
 /* Khi không active thì giữ màu xám nhạt */
 .nav-link:not(.active),
 .dropdown-menu .dropdown-item:not(.active),
 .dropdown-right li:not(.active) {
-    color: #888; /* Màu xám nhạt */
+    color: #888;
     background: transparent;
 }
 
@@ -351,7 +350,7 @@
 
 /* Mặc định: Màu chữ xám nhạt */
 .nav-link {
-    color: #888; /* Xám nhạt */
+    color: #888;
     transition: color 0.3s ease-in-out, background 0.3s ease-in-out;
 }
 
